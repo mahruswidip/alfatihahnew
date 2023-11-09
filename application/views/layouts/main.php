@@ -29,15 +29,17 @@
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-icons.css" rel="stylesheet" />
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
+
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url('assets'); ?>/css/argon-dashboard.css" rel="stylesheet" />
-    <!-- my Tambahan -->
 
+
+    <!-- my Tambahan -->
     <!-- DataTables CSS with Bootstrap 5 support -->
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="<?php echo base_url('assets'); ?>/css/star-rating.css">
     <style>
         /* Mengatur tombol aksi menjadi di tengah kolom */
         td.td-column-center {
@@ -46,6 +48,20 @@
 
         td.td-column-right {
             text-align: right;
+        }
+
+        .star {
+            cursor: pointer;
+        }
+
+        .star.fas {
+            color: gold;
+            /* Change the color of filled stars */
+        }
+
+        .star.far {
+            color: #ccc;
+            /* Change the color of empty stars */
         }
     </style>
 
@@ -89,11 +105,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./pages/virtual-reality.html">
+                    <a class="nav-link " href="<?php echo site_url(''); ?>jamaah/index">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-app text-info text-sm opacity-10"></i>
+                            <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
+                        <span class="nav-link-text ms-1">Jamaah</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -299,6 +315,7 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
+
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

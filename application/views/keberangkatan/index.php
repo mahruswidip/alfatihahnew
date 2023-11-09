@@ -5,7 +5,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <h6>Tanggal Keberangkatan</h6>
-                        <button class="btn btn-primary btn-sm ms-auto" type="submit"><span class="fa fa-plus">&nbsp</span> Tambah</button>
+                        <a href="<?php echo site_url('keberangkatan/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -94,9 +94,9 @@
                     data: null,
                     className: 'td-column-right',
                     render: function(data, type, row) {
-                        var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn btn-primary btn-sm"><span class="fa fa-pencil"></span></a>';
-                        var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></a>';
-                        var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn btn-warning btn-sm"><span class="fa fa-times"></span></a>';
+                        var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                        var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                        var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';
                         return editButton + ' ' + deleteButton + ' ' + deactiveButton;
                     }
                 },

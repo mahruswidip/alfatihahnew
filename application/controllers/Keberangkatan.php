@@ -53,7 +53,7 @@ class Keberangkatan extends CI_Controller
         if (isset($_POST) && count($_POST) > 0) {
             $params = array(
                 'tanggal_keberangkatan' => $this->input->post('tanggal_keberangkatan'),
-                'is_aktif' => $this->input->post('is_aktif'),
+                'is_aktif' => '1',
                 'tanggal_manasik' => $this->input->post('tanggal_manasik'),
             );
 
