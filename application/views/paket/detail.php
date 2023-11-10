@@ -1,3 +1,14 @@
+<style>
+    .logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 110px;
+        /* Adjust as needed */
+        height: 110px;
+        /* Adjust as needed */
+    }
+</style>
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-lg-8">
@@ -26,6 +37,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body pt-0 p-3 mt-3 mx-2">
+                                    <img class="logo" src="<?php echo base_url() . 'assets/img/logos/' . (($paket[0]['travel'] == 'Rosana Travel') ? 'logoros.png' : 'logonip.png'); ?>" alt="logo">
                                     <span class="text-xs">Keberangkatan</span>
                                     <h6 class="mb-0"><?php echo $tanggalConverted = date_format(date_create($paket[0]['tanggal_keberangkatan']), 'd F Y'); ?></h6>
                                     <span class="text-xs">Program</span>

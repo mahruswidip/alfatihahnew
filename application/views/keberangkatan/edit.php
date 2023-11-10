@@ -28,15 +28,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-control-label">Status</label>
-                                    <select name="is_aktif" required class="form-control">
-                                        <option value="1" <?php echo ($keberangkatan['is_aktif'] == 1) ? 'selected' : ''; ?>>Aktif</option>
-                                        <option value="0" <?php echo ($keberangkatan['is_aktif'] == 0) ? 'selected' : ''; ?>>Non Aktif</option>
-                                    </select><br>
-                                </div>
-                            </div> -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Tanggal Manasik</label>

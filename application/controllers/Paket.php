@@ -72,6 +72,7 @@ class Paket extends CI_Controller
                 $gambar = $gbr['file_name'];
 
                 $params = array(
+                    'travel' => $this->input->post('travel'),
                     'nama_program' => $this->input->post('nama_program'),
                     'kategori' => $this->input->post('kategori'),
                     'fk_id_keberangkatan' => $this->input->post('fk_id_keberangkatan'),
@@ -88,6 +89,7 @@ class Paket extends CI_Controller
                     'sudah_termasuk' => 'Tiket Pesawat Economy Class • Asuransi perjalanan & Covid-19 (mengcover resiko Covid-19) • Akomodasi Hotel di Mekkah & Medinah(Sesuai Pilihan Paket Umroh) • 2 kali Umrah, 1x city tour di Mekkah & Medinah (kondisional) • Makan prasmanan 3x sehari (Full Board Hotel / Box). • Transportasi Bus AC. • Muthawif / Pembimbing Ibadah.  Catatan : • Membawa Air Zam-Zam (Liquid) per 18 Mei 2022 sudah tidak diijinkan oleh semua Airlines (mengikuti peraturan dari GACA).',
                     'belum_termasuk' => 'Biaya Handling Bandara, Fasilitas Ibadah, Manasik • Biaya PCR di Saudi  • Biaya Pengurusan Paspor (Jika belum punya/sudah tidak berlaku) • Biaya Suntik Meningitis. • Biaya Surat Mahram (Bagi wanita usia dibawah 45 Tahun yang berangkat sendirian) • Biaya Pajak Saudi (municipility 5% & VAT 15%) & Biaya Pajak Indonesia (PPN11%).. Jika sudah diberlakukan • Biaya Tour / Makan / Minum diluar program. • Biaya lain-lain yang bersifat pribadi : Telepon, Laundry, Tips, Kelebihan Bagasi, dll.',
                     'tampilan' => 'Uang Muka',
+                    'publish' => ($this->input->post('publish') === 'on') ? 1 : 0,
                     'created_by' => $user_id,
                 );
 

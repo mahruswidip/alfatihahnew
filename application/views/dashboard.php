@@ -6,10 +6,8 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                                <h5 class="font-weight-bolder">
-                                    $53,000
-                                </h5>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Jamaah</p>
+                                <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                     since yesterday
@@ -31,10 +29,8 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                                <h5 class="font-weight-bolder">
-                                    2,300
-                                </h5>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jamaah Umroh</p>
+                                <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah_umroh_only ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     since last week
@@ -56,9 +52,9 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jamaah Haji</p>
                                 <h5 class="font-weight-bolder">
-                                    +3,462
+                                    <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah_haji_only ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 </h5>
                                 <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -104,10 +100,10 @@
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
                 <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h6 class="text-capitalize">Sales overview</h6>
+                    <h6 class="text-capitalize">Perolehan Jamaah Per-Bulan</h6>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
-                        <span class="font-weight-bold">4% more</span> in 2021
+                        <span class="font-weight-normal">Data seluruh Cabang & Pusat</span>
                     </p>
                 </div>
                 <div class="card-body p-3">
@@ -117,49 +113,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5">
-            <div class="card card-carousel overflow-hidden h-100 p-0">
-                <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner border-radius-lg h-100">
-                        <div class="carousel-item h-100 active" style="background-image: url('<?php echo base_url('assets'); ?>/img/carousel-1.jpg');
-      background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Get started with Argon</h5>
-                                <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('<?php echo base_url('assets'); ?>/img/carousel-2.jpg');
-      background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                                <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('<?php echo base_url('assets'); ?>/img/carousel-3.jpg');
-      background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-trophy text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-                            </div>
-                        </div>
+        <div class="col-lg-5 mb-lg-0 mb-4">
+            <div class="card z-index-2 h-100">
+                <div class="card-header pb-0 pt-3 bg-transparent">
+                    <h6 class="text-capitalize">Perolehan Jamaah berdasarkan Paket</h6>
+                    <p class="text-sm mb-0">
+                        <i class="fa fa-arrow-up text-success"></i>
+                        <span class="font-weight-normal">Data seluruh Cabang & Pusat</span>
+                    </p>
+                </div>
+                <div class="card-body p-3">
+                    <div class="chart">
+                        <canvas id="pie-chart" class="chart-canvas" height="300px"></canvas>
                     </div>
-                    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -169,7 +135,7 @@
             <div class="card ">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Sales by Country</h6>
+                        <h6 class="mb-2">Jamaah dari Kantor</h6>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -182,27 +148,15 @@
                                             <img src="<?php echo base_url('assets'); ?>/img/icons/flags/US.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">United States</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Pusat:</p>
+                                            <h6 class="text-sm mb-0">Pasuruan</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$230,900</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">29.9%</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_pasuruan ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -213,27 +167,15 @@
                                             <img src="<?php echo base_url('assets'); ?>/img/icons/flags/DE.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Germany</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Malang</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">3.900</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$440,000</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">40.22%</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_malang ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -244,27 +186,15 @@
                                             <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Great Britain</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Probolinggo</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">1.400</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$190,700</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">23.44%</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_probolinggo ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -275,27 +205,52 @@
                                             <img src="<?php echo base_url('assets'); ?>/img/icons/flags/BR.png" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Brasil</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Jember</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">562</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_jember ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/AU.png" alt="Country flag">
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Surabaya</h6>
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$143,960</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_surabaya ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">32.14%</h6>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png" alt="Country flag">
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Situbondo</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_situbondo ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -405,3 +360,5 @@
         </div>
     </footer>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

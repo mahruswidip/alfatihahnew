@@ -14,11 +14,13 @@
                         <table id="dataTable-paket" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Travel </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Keberangkatan</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Keberangkatan</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Program</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hotel Mekkah</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hotel Madinah</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
 
                                 </tr>
@@ -88,6 +90,11 @@
                 });
             },
             columns: [{
+                    data: 'null',
+                    render: function(data, type, row) {
+                        return '<p class="text-xs font-weight-bold mb-0">' + row.travel + '</p>';
+                    },
+                }, {
                     data: 'paket_img',
                     render: function(data, type, row) {
                         // Assuming data contains the filename (e.g., "c39f997660f4a7e707658a141d30e7ce.jpg")
@@ -139,6 +146,17 @@
                         // Generate HTML for displaying hotel name and star rating
                         return '<p class="text-xs font-weight-bold mb-0">' + hotelMadinah + '</p>' + generateStarRating(bintangMadinah);
                     },
+                },
+                {
+                    data: 'publish',
+                    className: 'td-column-center',
+                    render: function(data, type, row) {
+                        if (data === "1") {
+                            return '<span class="badge bg-gradient-success">Publish</span>';
+                        } else {
+                            return '<span class="badge bg-gradient-secondary">Not Published</span>';
+                        }
+                    }
                 },
                 {
                     data: null,

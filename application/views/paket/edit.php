@@ -9,10 +9,39 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php var_dump($paket) ?>
+                    <!-- <?php var_dump($paket) ?> -->
                     <form action="<?php echo site_url() . 'paket/edit/' . $paket['id_paket'] ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="form-control-label">Travel</label>
+                                    <select name="travel" class="form-control">
+                                        <option value="">Pilih Travel</option>
+                                        <?php
+                                        $travel_values = array(
+                                            'Rosana Travel' => 'Rosana Travel',
+                                            'Nipindo Travel' => 'Nipindo Travel',
+                                        );
+
+                                        foreach ($travel_values as $value => $display_text) {
+                                            $selected = "";
+
+                                            // Check if there is input post data for 'travel'
+                                            if ($this->input->post('travel') == $value) {
+                                                $selected = 'selected="selected"';
+                                            }
+                                            // If not, check if the record value matches the option value
+                                            elseif ($paket['travel'] == $value) {
+                                                $selected = 'selected="selected"';
+                                            }
+
+                                            echo '<option value="' . $value . '" ' . $selected . '>' . $display_text . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="form-control-label">Kategori</label>
                                     <select name="kategori" class="form-control">
@@ -218,9 +247,19 @@
                                     <input type="text" placeholder="30000000" name="harga_paket" value="<?php echo ($this->input->post('harga_paket') ? $this->input->post('harga_paket') : $paket['harga_paket']); ?>" class="form-control" id="harga_paket" />
                                 </div>
                             </div>
+                            <hr class="horizontal dark mt-0">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Publikasikan <p class="text-secondary text-xs">(Tampilkan di Website dan Aplikasi)</p></label>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" id="publish" name="publish" <?php echo ($paket['publish'] == 1) ? 'checked' : ''; ?>>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                         <hr class="horizontal dark mt-0">
-                        <button class="btn btn-primary btn-sm ms-auto" type="submit">Tambah</button>
+                        <button class="btn btn-primary btn-sm ms-auto" type="submit">Simpan</button>
                     </form>
                 </div>
             </div>

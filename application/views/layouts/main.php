@@ -149,7 +149,7 @@
                 </li>
             </ul>
         </div>
-        <div class="sidenav-footer mx-3 ">
+        <!-- <div class="sidenav-footer mx-3 ">
             <div class="card card-plain shadow-none" id="sidenavCard">
                 <img class="w-50 mx-auto" src="<?php echo base_url('assets'); ?>/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
                 <div class="card-body text-center p-3 w-100 pt-0">
@@ -161,7 +161,7 @@
             </div>
             <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
             <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
-        </div>
+        </div> -->
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -207,6 +207,17 @@
                 $this->load->view($_view);
             ?>
         </section>
+        <?php
+        if (isset($jamaah_by_paket) && !empty($jamaah_by_paket)) {
+            $labels = array_column($jamaah_by_paket, 'paket');
+            $datapie = array_column($jamaah_by_paket, 'jumlah_jamaah');
+        }
+
+        if (isset($jamaah_perbulan) && !empty($jamaah_perbulan)) {
+            $label_line = array_column($jamaah_perbulan, 'bulan');
+            $dataline = array_column($jamaah_perbulan, 'jumlah_jamaah');
+        }
+        ?>
     </main>
 
     <!--   Core JS Files   -->
@@ -217,26 +228,27 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
-
     <script src="<?php echo base_url('assets'); ?>/js/core/popper.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/core/bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/plugins/chartjs.min.js"></script>
+    <script src="<?php echo base_url('assets'); ?>/js/plugins/countup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
-
+        var label_line = <?php echo json_encode($label_line); ?>;
+        var dataline = <?php echo json_encode($dataline); ?>;
         var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
         gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
         gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
         gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
         new Chart(ctx1, {
             type: "line",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: label_line,
                 datasets: [{
-                    label: "Mobile apps",
+                    label: "Jumlah Jamaah",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -244,7 +256,7 @@
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: dataline,
                     maxBarThickness: 6
 
                 }],
@@ -300,6 +312,78 @@
                                 style: 'normal',
                                 lineHeight: 2
                             },
+                        }
+                    },
+                },
+            },
+        });
+
+        // Pie chart
+        var ctx4 = document.getElementById("pie-chart").getContext("2d");
+        var labels = <?php echo json_encode($labels); ?>;
+        var datapie = <?php echo json_encode($datapie); ?>;
+
+        new Chart(ctx4, {
+            type: "pie",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Projects",
+                    weight: 9,
+                    cutout: 0,
+                    tension: 0.9,
+                    pointRadius: 2,
+                    borderWidth: 2,
+                    backgroundColor: ['#17c1e8', '#5e72e4', '#3A416F', '#a8b8d8'],
+                    data: datapie,
+                    fill: false
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            let sum = 0;
+                            let dataArr = ctx.chart.data.datasets[0].data;
+                            dataArr.map(data => {
+                                sum += data;
+                            });
+                            let percentage = (value * 100 / sum).toFixed(2) + "%";
+                            return percentage;
+                        },
+                        color: '#fff',
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            display: false,
                         }
                     },
                 },

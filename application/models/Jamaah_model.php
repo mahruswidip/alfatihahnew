@@ -103,6 +103,125 @@ class Jamaah_model extends CI_Model
         return $this->db->count_all_results();
     }
 
+    function get_umroh_only_jamaah_count()
+    {
+        $this->db->from('record_keberangkatan');
+        $this->db->where('id_paket !=', 25);
+        $this->db->where('id_paket !=', 23);
+        return $this->db->count_all_results();
+    }
+
+    function get_haji_only_jamaah_count()
+    {
+        $this->db->from('record_keberangkatan');
+        $this->db->where_in('id_paket', array(67, 70, 66));
+        return $this->db->count_all_results();
+    }
+
+    function get_jamaah_pasuruan_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(7, 1));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_malang_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(2));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_probolinggo_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(3));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_jember_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(5));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_surabaya_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(1));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_situbondo_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(4));
+        return $this->db->count_all_results();
+    }
+    function get_jamaah_jakarta_count()
+    {
+        $this->db->from('jamaah');
+        $this->db->where_in('created_by', array(6));
+        return $this->db->count_all_results();
+    }
+
+
+    public function get_jamaah_by_paket()
+    {
+        $this->db->select('p.paket, COUNT(r.id_jamaah) as jumlah_jamaah');
+        $this->db->from('paket p');
+        $this->db->join('record_keberangkatan r', 'p.id_paket = r.id_paket');
+        $this->db->group_by('p.paket');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    // public function get_jamaah_per_bulan()
+    // {
+    //     $this->db->select('MONTH(k.tanggal_keberangkatan) as bulan, COUNT(r.id_jamaah) as jumlah_jamaah');
+    //     $this->db->from('keberangkatan k');
+    //     $this->db->join('paket p', 'k.id_keberangkatan = p.fk_id_keberangkatan');
+    //     $this->db->join('record_keberangkatan r', 'p.id_paket = r.id_paket');
+    //     $this->db->where('YEAR(k.tanggal_keberangkatan)', 2023);
+    //     $this->db->group_by('MONTH(k.tanggal_keberangkatan)');
+    //     $query = $this->db->get();
+
+    //     return $query->result_array();
+    // }
+    public function get_jamaah_per_bulan()
+    {
+        $this->db->select('MONTH(k.tanggal_keberangkatan) as bulan, COUNT(r.id_jamaah) as jumlah_jamaah');
+        $this->db->from('keberangkatan k');
+        $this->db->join('paket p', 'k.id_keberangkatan = p.fk_id_keberangkatan');
+        $this->db->join('record_keberangkatan r', 'p.id_paket = r.id_paket');
+        $this->db->where('YEAR(k.tanggal_keberangkatan)', 2023);
+        $this->db->group_by('MONTH(k.tanggal_keberangkatan)');
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+
+        $bulan = array(
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Maret',
+            4 => 'April',
+            5 => 'Mei',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Agustus',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'Desember'
+        );
+
+        foreach ($result as $key => $value) {
+            $result[$key]['bulan'] = $bulan[$value['bulan']];
+        }
+
+        return $result;
+    }
+
+
+
+
     function get_jamaah_by_nik($nik)
     {
         return $this->db->get_where('jamaah', array('nik' => $nik))->row_array();
