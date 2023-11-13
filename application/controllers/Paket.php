@@ -188,6 +188,14 @@ class Paket extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
+    public function cetak_label_koper($id_paket)
+    {
+        $data['label'] = $this->Paket_model->get_record_with_this_paket($id_paket);
+
+        $data['_view'] = 'paket/cetak_label_koper'; // Change this to the view file for printing labels
+        $this->load->view('layouts/main', $data);
+    }
+
     /*
      * Deleting paket
      */

@@ -49,6 +49,7 @@ class Paket_model extends CI_Model
         $this->db->where('record_keberangkatan.id_paket', $id_paket);
         return $this->db->get('record_keberangkatan')->result_array();
     }
+
     /*
      * Get all paket
      */

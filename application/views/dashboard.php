@@ -7,7 +7,8 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Jamaah</p>
-                                <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
+                                <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah ?>"
+                                    data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                     since yesterday
@@ -30,7 +31,9 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Jamaah Umroh</p>
-                                <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah_umroh_only ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
+                                <h5 class="font-weight-bolder timer" data-from="0"
+                                    data-to="<?php echo $jamaah_umroh_only ?>" data-speed="1256"
+                                    data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     since last week
@@ -54,7 +57,9 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Jamaah Haji</p>
                                 <h5 class="font-weight-bolder">
-                                    <h5 class="font-weight-bolder timer" data-from="0" data-to="<?php echo $jamaah_haji_only ?>" data-speed="1256" data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
+                                    <h5 class="font-weight-bolder timer" data-from="0"
+                                        data-to="<?php echo $jamaah_haji_only ?>" data-speed="1256"
+                                        data-countToOptions='{"formatter": "currencyFormatter"}'></h5>
                                 </h5>
                                 <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -145,7 +150,8 @@
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/US.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/US.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Pusat:</p>
@@ -156,7 +162,9 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_pasuruan ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_pasuruan ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -164,7 +172,8 @@
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/DE.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/DE.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
@@ -175,7 +184,9 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_malang ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_malang ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -183,7 +194,8 @@
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
@@ -194,7 +206,9 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_probolinggo ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_probolinggo ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -202,7 +216,8 @@
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/BR.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/BR.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
@@ -213,7 +228,9 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_jember ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_jember ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -221,7 +238,8 @@
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/AU.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/AU.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
@@ -232,14 +250,17 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_surabaya ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_surabaya ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             <tr>
                                 <td class="w-30">
                                     <div class="d-flex px-2 py-1 align-items-center">
                                         <div>
-                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png" alt="Country flag">
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png"
+                                                alt="Country flag">
                                         </div>
                                         <div class="ms-4">
                                             <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
@@ -250,7 +271,9 @@
                                 <td>
                                     <div class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
-                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_situbondo ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                        <h6 class="text-sm mb-0 timer" data-from="0"
+                                            data-to="<?php echo $jamaah_situbondo ?>" data-speed="2531"
+                                            data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
                                     </div>
                                 </td>
                             </tr>
@@ -273,11 +296,14 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                                    <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                                    <span class="text-xs">250 in stock, <span class="font-weight-bold">346+
+                                            sold</span></span>
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                <button
+                                    class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="ni ni-bold-right" aria-hidden="true"></i></button>
                             </div>
                         </li>
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -287,11 +313,14 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                                    <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
+                                    <span class="text-xs">123 closed, <span class="font-weight-bold">15
+                                            open</span></span>
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                <button
+                                    class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="ni ni-bold-right" aria-hidden="true"></i></button>
                             </div>
                         </li>
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -301,11 +330,14 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Error logs</h6>
-                                    <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
+                                    <span class="text-xs">1 is active, <span class="font-weight-bold">40
+                                            closed</span></span>
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                <button
+                                    class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="ni ni-bold-right" aria-hidden="true"></i></button>
                             </div>
                         </li>
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
@@ -319,7 +351,9 @@
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                <button
+                                    class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="ni ni-bold-right" aria-hidden="true"></i></button>
                             </div>
                         </li>
                     </ul>
@@ -333,7 +367,7 @@
                 <div class="col-lg-6 mb-lg-0 mb-4">
                     <div class="copyright text-center text-sm text-muted text-lg-start">
                         © <script>
-                            document.write(new Date().getFullYear())
+                        document.write(new Date().getFullYear())
                         </script>,
                         made with <i class="fa fa-heart"></i> by
                         <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
@@ -343,16 +377,20 @@
                 <div class="col-lg-6">
                     <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative
+                                Tim</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
+                                target="_blank">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
+                                target="_blank">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                                target="_blank">License</a>
                         </li>
                     </ul>
                 </div>

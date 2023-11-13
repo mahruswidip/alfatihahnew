@@ -1,13 +1,13 @@
 <style>
-    .logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 110px;
-        /* Adjust as needed */
-        height: 110px;
-        /* Adjust as needed */
-    }
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 110px;
+    /* Adjust as needed */
+    height: 110px;
+    /* Adjust as needed */
+}
 </style>
 <div class="container-fluid py-4">
     <div class="row">
@@ -15,7 +15,8 @@
             <div class="row">
                 <div class="col-xl-4 mb-xl-0 mb-4">
                     <div class="card bg-transparent shadow-xl">
-                        <img src="<?php echo base_url() . 'assets/images/' . $paket[0]['paket_img']; ?>" class="img-fluid border-radius-lg" alt="Responsive image">
+                        <img src="<?php echo base_url() . 'assets/images/' . $paket[0]['paket_img']; ?>"
+                            class="img-fluid border-radius-lg" alt="Responsive image">
                     </div>
                 </div>
                 <?php
@@ -37,9 +38,13 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body pt-0 p-3 mt-3 mx-2">
-                                    <img class="logo" src="<?php echo base_url() . 'assets/img/logos/' . (($paket[0]['travel'] == 'Rosana Travel') ? 'logoros.png' : 'logonip.png'); ?>" alt="logo">
+                                    <img class="logo"
+                                        src="<?php echo base_url() . 'assets/img/logos/' . (($paket[0]['travel'] == 'Rosana Travel') ? 'logoros.png' : 'logonip.png'); ?>"
+                                        alt="logo">
                                     <span class="text-xs">Keberangkatan</span>
-                                    <h6 class="mb-0"><?php echo $tanggalConverted = date_format(date_create($paket[0]['tanggal_keberangkatan']), 'd F Y'); ?></h6>
+                                    <h6 class="mb-0">
+                                        <?php echo $tanggalConverted = date_format(date_create($paket[0]['tanggal_keberangkatan']), 'd F Y'); ?>
+                                    </h6>
                                     <span class="text-xs">Program</span>
                                     <h6 class="mb-0"><?php echo $paket[0]['nama_program']; ?></h6>
                                     <p class="text-bold"><?php echo $paket[0]['paket']; ?></p>
@@ -48,13 +53,19 @@
                                     <div class="row">
                                         <div class="col">
                                             <span class="text-xs">Hotel Mekkah</span>
-                                            <h6 class=""><?php echo generateStarRating($paket[0]['bintang_mekkah']); ?></h6>
+                                            <h6 class=""><?php echo generateStarRating($paket[0]['bintang_mekkah']); ?>
+                                            </h6>
                                         </div>
                                         <div class="col">
                                             <span class="text-xs">Hotel Madinah</span>
-                                            <h6 class=""><?php echo generateStarRating($paket[0]['bintang_madinah']); ?></h6>
+                                            <h6 class=""><?php echo generateStarRating($paket[0]['bintang_madinah']); ?>
+                                            </h6>
                                         </div>
                                     </div>
+                                    <a href="<?php echo site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket'] ?>"
+                                        class="btn btn-primary mt-3"
+                                        style="position: absolute; bottom: 0px; right: 10px;">Cetak Label
+                                        Koper</a>
                                 </div>
                             </div>
                         </div>
@@ -67,41 +78,60 @@
         <div class="col-md-8 mt-4">
             <div class="card">
                 <div class="card-header pb-0 px-3 mb-0 mx-2">
-                    <h6>Daftar Jamaah </h6>
-                    <p class="text-xs">Total Jamaah : <?php echo count($record); ?></p>
-                    <div class="col-md-3">
-                        <form action="<?php echo site_url() . 'paket/detail/' . $paket[0]['id_paket'] ?>" method="post" enctype="multipart/form-data">
-                            <input type="text" name="link_grup_whatsapp" value="<?php echo $this->input->post('link_grup_whatsapp'); ?>" class="form-control mb-2" placeholder="Link Grup Whatsapp" id="link_grup_whatsapp" />
-                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-gear me-2" aria-hidden="true"></i>Set Link Grup WA</button>
-                        </form>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6>Daftar Jamaah</h6>
+                            <p class="text-xs">Total Jamaah: <?php echo count($record); ?></p>
+                        </div>
+                        <div class="col-md-3">
+                            <form action="<?php echo site_url() . 'paket/detail/' . $paket[0]['id_paket'] ?>"
+                                method="post" enctype="multipart/form-data">
+                                <input type="text" name="link_grup_whatsapp"
+                                    value="<?php echo $this->input->post('link_grup_whatsapp'); ?>"
+                                    class="form-control mb-2" placeholder="Link Grup Whatsapp"
+                                    id="link_grup_whatsapp" />
+                                <button type="submit" class="btn btn-success"><i class="fa fa-gear me-2"
+                                        aria-hidden="true"></i>Set Link Grup WA</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
                 <div class="card-body pt-4 p-3">
                     <ul class="list-group" id="jamaahTable">
                         <?php foreach ($record as $jamaah) { ?>
-                            <?php $nowa = $str = ltrim($jamaah['nomor_telepon'], '0'); ?>
-                            <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                <div class="me-4">
-                                    <img src="<?php echo base_url('assets/images/' . $jamaah['jamaah_img']); ?>" alt="Jamaah Image" class="img-fluid    border-radius-lg" style="max-width: 100px; max-height: 100px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-3 text-sm"><?php echo $jamaah['nama_jamaah']; ?></h6>
-                                    <span class="mb-2 text-xs">Nomor Paspor: <span class="text-dark font-weight-bold ms-sm-2"><?php echo $jamaah['nomor_paspor']; ?></span></span>
-                                    <span class="mb-2 text-xs">Nomor HP: <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $jamaah['nomor_telepon']; ?></span></span>
-                                    <span class="text-xs">ID Record: <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $jamaah['id_record']; ?></span></span>
-                                </div>
-                                <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="<?php echo site_url('jamaah/remove_record_keberangkatan/' . $jamaah['id_jamaah']); ?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="<?php echo site_url('jamaah/edit/' . $jamaah['id_jamaah']); ?>"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                    <?php if ($jamaah['nomor_telepon'] != null) {
+                        <?php $nowa = $str = ltrim($jamaah['nomor_telepon'], '0'); ?>
+                        <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                            <div class="me-4">
+                                <img src="<?php echo base_url('assets/images/' . $jamaah['jamaah_img']); ?>"
+                                    alt="Jamaah Image" class="img-fluid    border-radius-lg"
+                                    style="max-width: 100px; max-height: 100px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h6 class="mb-3 text-sm"><?php echo $jamaah['nama_jamaah']; ?></h6>
+                                <span class="mb-2 text-xs">Nomor Paspor: <span
+                                        class="text-dark font-weight-bold ms-sm-2"><?php echo $jamaah['nomor_paspor']; ?></span></span>
+                                <span class="mb-2 text-xs">Nomor HP: <span
+                                        class="text-dark ms-sm-2 font-weight-bold"><?php echo $jamaah['nomor_telepon']; ?></span></span>
+                                <span class="text-xs">ID Record: <span
+                                        class="text-dark ms-sm-2 font-weight-bold"><?php echo $jamaah['id_record']; ?></span></span>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                    href="<?php echo site_url('jamaah/remove_record_keberangkatan/' . $jamaah['id_jamaah']); ?>"><i
+                                        class="far fa-trash-alt me-2"></i>Delete</a>
+                                <a class="btn btn-link text-dark px-3 mb-0"
+                                    href="<?php echo site_url('jamaah/edit/' . $jamaah['id_jamaah']); ?>"><i
+                                        class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                <?php if ($jamaah['nomor_telepon'] != null) {
                                         echo '<a href="https://wa.me/62' . $nowa . '?text=Gabung%20bersama%20di%20Grup%20Whatsapp%20Keberangkatan%20Umroh%20Anda%0AKlik%20Link%20dibawah%20Ini%20%3A%20' . $this->session->userdata('link') . '" class="btn btn-link text-success px-3 mb-0"><i class="fa fa-whatsapp text-success me-2" aria-hidden="true"></i>Undang</a>';
                                     } else {
                                         echo '<a class="btn btn-link text-secondary px-3 mb-0"><i class="fa fa-whatsapp text-secondary me-2" aria-hidden="true" disabled></i>Undang</a>';
                                     }
                                     ?>
 
-                                </div>
-                            </li>
+                            </div>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -111,12 +141,12 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#jamaahTable').DataTable({
-            "paging": true, // Enable pagination
-            "searching": true, // Enable search functionality
-            "lengthMenu": [5, 10, 25, 50], // Number of records per page options
-            "pageLength": 10 // Default number of records per page
-        });
+$(document).ready(function() {
+    $('#jamaahTable').DataTable({
+        "paging": true, // Enable pagination
+        "searching": true, // Enable search functionality
+        "lengthMenu": [5, 10, 25, 50], // Number of records per page options
+        "pageLength": 10 // Default number of records per page
     });
+});
 </script>
