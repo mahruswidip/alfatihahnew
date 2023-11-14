@@ -29,12 +29,7 @@ class Keberangkatan extends CI_Controller
         $user_level = $this->session->userdata('user_level');
         $user_id = $this->session->userdata('user_id');
 
-        $data['keberangkatan'] = '';
-        if ($user_level == '2') {
-            $data['keberangkatan'] = $this->Keberangkatan_model->get_users_by_created_by($user_id);
-        } elseif ($user_level == '1') {
-            $data['keberangkatan'] = $this->Keberangkatan_model->get_all_keberangkatan($params);
-        }
+        $data['keberangkatan'] = $this->Keberangkatan_model->get_all_keberangkatan($params);
 
 
         // echo '<pre>';
