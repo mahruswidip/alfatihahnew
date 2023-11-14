@@ -85,7 +85,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Nomor Paspor</label>
-                                    <input type="text" required placeholder="C238712" name="nomor_paspor" value="<?php echo $this->input->post('nomor_paspor'); ?>" class="form-control" id="nomor_paspor" />
+                                    <input type="text" placeholder="C238712" name="nomor_paspor" value="<?php echo $this->input->post('nomor_paspor'); ?>" class="form-control" id="nomor_paspor" />
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -97,7 +97,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Email</label>
-                                    <input type="text" required placeholder="contoh@apa.com" name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
+                                    <input type="text" placeholder="contoh@apa.com" name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
                                 </div>
                             </div>
                         </div>
