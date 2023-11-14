@@ -50,7 +50,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <h6>Riwayat Keberangkatan</h6>
-                        <a href="<?php echo site_url('jamaah/add_keberangkatan/'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus me-2"></span> Tambah Keberangkatan</a>
+                        <a href="<?php echo site_url('jamaah/add_keberangkatan/') . $jamaah['id_jamaah']; ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus me-2"></span> Tambah Keberangkatan</a>
                     </div>
                 </div>
                 <div class="card-body pt-4 p-3">
