@@ -5,7 +5,6 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <h6>Paket</h6>
-                        <?php echo $this->session->userdata('user_level')> ?>
                         <a href="<?php echo site_url('paket/bukatambah'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
                     </div>
                 </div>
