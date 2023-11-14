@@ -163,7 +163,7 @@
                     className: 'td-column-right',
                     render: function(data, type, row) {
                         // Check if user_level is equal to 1
-                        if (<?php echo $this->session->userdata('user_level'); ?> === '1') {
+                        if (<?php echo $this->session->userdata('user_level'); ?> == '1') {
                             var editButton = '<a href="<?php echo site_url('paket/edit/'); ?>' + row.id_paket + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
                             var deleteButton = '<a href="<?php echo site_url('paket/remove/'); ?>' + row.id_paket + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
                             return editButton + ' ' + deleteButton;

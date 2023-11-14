@@ -16,7 +16,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Keberangkatan</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Manasik</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -108,7 +108,7 @@
                     data: null,
                     className: 'td-column-right',
                     render: function(data, type, row) {
-                        if (<?php echo $this->session->userdata('user_level'); ?> === '1') {
+                        if (<?php echo $this->session->userdata('user_level'); ?> == '1') {
                             var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
                             var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
                             var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';

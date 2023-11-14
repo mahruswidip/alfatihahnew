@@ -25,6 +25,9 @@ class Paket extends CI_Controller
         $config['total_rows'] = $this->Paket_model->get_all_paket_count();
         $this->pagination->initialize($config);
 
+        $user_level = $this->session->userdata('user_level');
+        $user_id = $this->session->userdata('user_id');
+
         $data['paket'] = $this->Paket_model->get_all_paket($params);
 
         $data['_view'] = 'paket/index';
