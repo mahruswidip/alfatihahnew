@@ -193,24 +193,6 @@ class Paket extends CI_Controller
         $data['label'] = $this->Paket_model->get_record_with_this_paket($id_paket);
         $data['paket'] = $this->Paket_model->get_tanggal_keberangkatan_for_detail($id_paket);
 
-        // Get the base64 image data from the POST request
-        $imageData = $_POST['imageData'];
-
-        // Remove the "data:image/jpeg;base64," prefix
-        $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
-
-        // Decode the base64 data
-        $imageData = base64_decode($imageData);
-
-        // Set the file path and name
-        $filePath =  base_url('assets/images/card/') . uniqid() . '.jpg';
-
-        // Save the image to the server
-        file_put_contents($filePath, $imageData);
-
-        // Return the file path for any further use
-        echo $filePath;
-
         $data['_view'] = 'paket/cetak_label_koper'; // Change this to the view file for printing labels
         $this->load->view('layouts/main', $data);
     }
