@@ -55,36 +55,28 @@ class Jamaah extends CI_Controller
         echo json_encode($json);
     }
 
-    function view()
-    {
-        $data = $this->Jamaah_model->get_all_jamaah(); // Call a method from your model to get data from the database
-        echo json_encode($data);
-    }
-
     // function view()
     // {
-    //     $search = $_POST['search']['value']; // Ambil data yang di ketik user pada textbox pencarian
-    //     $limit = $_POST['length']; // Ambil data limit per page
-    //     $start = $_POST['start']; // Ambil data start
-    //     $order_index = $_POST['order'][0]['column']; // Untuk mengambil index yg menjadi acuan untuk sorting
-    //     $order_field = $_POST['columns'][$order_index]['data']; // Untuk mengambil nama field yg menjadi acuan untuk sorting
-    //     $order_ascdesc = $_POST['order'][0]['dir']; // Untuk menentukan order by "ASC" atau "DESC"
-
-    //     $sql_total = $this->Jamaah_model->count_all(); // Panggil fungsi count_all pada Jamaah_model
-    //     $sql_data = $this->Jamaah_model->filter($search, $limit, $start, $order_field, $order_ascdesc); // Panggil fungsi filter pada Jamaah_model
-    //     $sql_filter = $this->Jamaah_model->count_filter($search); // Panggil fungsi count_filter pada Jamaah_model
-
-    //     $callback = array(
-    //         'draw' => $_POST['draw'],
-    //         // Ini dari datatablenya
-    //         'recordsTotal' => $sql_total,
-    //         'recordsFiltered' => $sql_filter,
-    //         'data' => $sql_data
-    //     );
-
-    //     header('Content-Type: application/json');
-    //     echo json_encode($callback); // Convert array $callback ke json
+    //     $data = $this->Jamaah_model->get_all_jamaah(); // Call a method from your model to get data from the database
+    //     echo json_encode($data);
     // }
+
+    function view()
+    {
+        $user_level = $this->session->userdata('user_level');
+        $user_id = $this->session->userdata('user_id');
+
+        if ($user_level == '2') {
+            $data = $this->Jamaah_model->get_all_jamaah_by_cabang($user_id);
+        } elseif ($user_level == '1') {
+            $data = $this->Jamaah_model->get_all_jamaah();
+        } else {
+            // Handle other user levels or provide a default behavior
+            $data = array(); // You might want to handle this case accordingly
+        }
+
+        echo json_encode($data);
+    }
 
 
     function bukatambah()
