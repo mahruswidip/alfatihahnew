@@ -5,7 +5,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <h6>Paket</h6>
-                        <?php echo $this->session->userdata('user_level') ?>
+                        <?php echo $this->session->userdata('user_level')> ?>
                         <a href="<?php echo site_url('paket/bukatambah'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
                     </div>
                 </div>
@@ -163,11 +163,17 @@
                     data: null,
                     className: 'td-column-right',
                     render: function(data, type, row) {
-                        var editButton = '<a href="<?php echo site_url('paket/edit/'); ?>' + row.id_paket + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
-                        var deleteButton = '<a href="<?php echo site_url('paket/remove/'); ?>' + row.id_paket + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
-                        return editButton + ' ' + deleteButton;
+                        // Check if user_level is equal to 1
+                        if (<?php echo $this->session->userdata('user_level'); ?> == 1) {
+                            var editButton = '<a href="<?php echo site_url('paket/edit/'); ?>' + row.id_paket + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                            var deleteButton = '<a href="<?php echo site_url('paket/remove/'); ?>' + row.id_paket + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                            return editButton + ' ' + deleteButton;
+                        } else {
+                            // If user_level is not equal to 1, return an empty string
+                            return '';
+                        }
                     }
-                },
+                }
 
             ],
             // "order": [
