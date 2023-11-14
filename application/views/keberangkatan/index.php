@@ -90,14 +90,32 @@
                         return '<h6 class="mb-0 text-xs">' + date.toLocaleDateString('id-ID', options) + '</h6>';
                     }
                 },
+                // {
+                //     data: null,
+                //     className: 'td-column-right',
+                //     render: function(data, type, row) {
+                //         // Check if user_level is equal to 1
+                //         if (<?php echo $this->session->userdata('user_level'); ?> === '1') {
+                //             var editButton = '<a href="<?php echo site_url('paket/edit/'); ?>' + row.id_paket + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                //             var deleteButton = '<a href="<?php echo site_url('paket/remove/'); ?>' + row.id_paket + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                //             return editButton + ' ' + deleteButton;
+                //         } else {
+                //             return '';
+                //         }
+                //     }
+                // },
                 {
                     data: null,
                     className: 'td-column-right',
                     render: function(data, type, row) {
-                        var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
-                        var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
-                        var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';
-                        return editButton + ' ' + deleteButton + ' ' + deactiveButton;
+                        if (<?php echo $this->session->userdata('user_level'); ?> === '1') {
+                            var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                            var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                            var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';
+                            return editButton + ' ' + deleteButton + ' ' + deactiveButton;
+                        } else {
+                            return '';
+                        }
                     }
                 },
 
