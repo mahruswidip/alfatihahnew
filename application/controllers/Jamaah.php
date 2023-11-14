@@ -55,28 +55,28 @@ class Jamaah extends CI_Controller
         echo json_encode($json);
     }
 
-    // function view()
-    // {
-    //     $data = $this->Jamaah_model->get_all_jamaah(); // Call a method from your model to get data from the database
-    //     echo json_encode($data);
-    // }
-
     function view()
     {
-        $user_level = $this->session->userdata('user_level');
-        $user_id = $this->session->userdata('user_id');
-
-        if ($user_level == '2') {
-            $data = $this->Jamaah_model->get_all_jamaah_by_cabang($user_id);
-        } elseif ($user_level == '1') {
-            $data = $this->Jamaah_model->get_all_jamaah();
-        } else {
-            // Handle other user levels or provide a default behavior
-            $data = array(); // You might want to handle this case accordingly
-        }
-
+        $data = $this->Jamaah_model->get_all_jamaah(); // Call a method from your model to get data from the database
         echo json_encode($data);
     }
+
+    // function view()
+    // {
+    //     $user_level = $this->session->userdata('user_level');
+    //     $user_id = $this->session->userdata('user_id');
+
+    //     if ($user_level == '2') {
+    //         $data = $this->Jamaah_model->get_all_jamaah_by_cabang($user_id);
+    //     } elseif ($user_level == '1') {
+    //         $data = $this->Jamaah_model->get_all_jamaah();
+    //     } else {
+    //         // Handle other user levels or provide a default behavior
+    //         $data = array(); // You might want to handle this case accordingly
+    //     }
+
+    //     echo json_encode($data);
+    // }
 
 
     function bukatambah()
@@ -453,16 +453,34 @@ class Jamaah extends CI_Controller
     {
         $jamaah = $this->Jamaah_model->get_jamaah($id_jamaah);
 
-        // check if the jamaah exists before trying to delete it
-        if (isset($jamaah['id_jamaah'])) {
+        // Check if the jamaah exists and if it was created by the current user
+        if (isset($jamaah['id_jamaah']) && $jamaah['created_by'] == $this->session->userdata('user_id')) {
             $this->Jamaah_model->delete_jamaah($id_jamaah);
             unlink(FCPATH . 'assets/images/' . $jamaah['jamaah_img']);
             unlink(FCPATH . 'assets/images/qr_uuid/' . $jamaah['qr_code_benar']);
             redirect('jamaah/index');
         } else {
-            show_error('The jamaah you are trying to delete does not exist.');
+            // Display a warning message using JavaScript
+            echo '<script>';
+            echo 'alert("Maaf, anda tidak dapat menghapus Jamaah ini karena bukan jamaah Anda");';
+            echo 'window.history.back();'; // Redirect back to the previous page
+            echo '</script>';
         }
     }
+    // function remove($id_jamaah)
+    // {
+    //     $jamaah = $this->Jamaah_model->get_jamaah($id_jamaah);
+
+    //     // check if the jamaah exists before trying to delete it
+    //     if (isset($jamaah['id_jamaah'])) {
+    //         $this->Jamaah_model->delete_jamaah($id_jamaah);
+    //         unlink(FCPATH . 'assets/images/' . $jamaah['jamaah_img']);
+    //         unlink(FCPATH . 'assets/images/qr_uuid/' . $jamaah['qr_code_benar']);
+    //         redirect('jamaah/index');
+    //     } else {
+    //         show_error('The jamaah you are trying to delete does not exist.');
+    //     }
+    // }
 
     function remove_record_keberangkatan($id_record)
     {
