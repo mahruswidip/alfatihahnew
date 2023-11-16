@@ -64,7 +64,7 @@
                                     <span class="text-xs">Tanggal Manasik: <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $tanggalConverted = date_format(date_create($j['tanggal_manasik']), 'd F Y'); ?></span></span>
                                 </div>
                                 <div class="ms-auto text-end">
-                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="<?php echo site_url('jamaah/remove_record_keberangkatan/' . $jamaah['id_jamaah']); ?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="<?php echo site_url('jamaah/remove_record_keberangkatan/' . $j['id_record']); ?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
                                 </div>
                             </li>
                         <?php } ?>

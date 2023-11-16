@@ -488,7 +488,7 @@ class Jamaah extends CI_Controller
 
         // echo '<pre>';
         // print_r($record);
-        // exit(); 
+        // exit();
 
         // check if the paket exists before trying to delete it
         if (isset($record[0]['id_record'])) {
