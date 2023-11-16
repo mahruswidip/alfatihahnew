@@ -87,6 +87,7 @@ class Paket_model extends CI_Model
         $this->db->set('belum_termasuk', $params['belum_termasuk']);
         $this->db->set('paket_img', $gambar);
         $this->db->set('created_by', $params['created_by']);
+        $this->db->set('nomor_guide', $params['nomor_guide']);
         $this->db->set('publish', $params['publish']);
         $this->db->insert('paket');
     }

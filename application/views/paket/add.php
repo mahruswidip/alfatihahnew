@@ -203,6 +203,13 @@
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-0">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">Nomor Guide</label>
+                                    <input type="text" placeholder="+628115484515" name="nomor_guide" value="<?php echo $this->input->post('nomor_guide'); ?>" class="form-control" id="nomor_guide" />
+                                </div>
+                            </div>
+                            <hr class="horizontal dark mt-0">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Publikasikan <p class="text-secondary text-xs">(Tampilkan di Website dan Aplikasi)</p></label>
