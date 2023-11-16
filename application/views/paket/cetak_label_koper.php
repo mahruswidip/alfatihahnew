@@ -79,7 +79,7 @@
             $itemsPerColumn = 3; // Number of items per column
 
             for ($i = 0; $i < $numItems; $i += $itemsPerRow * $itemsPerColumn) {
-                echo '<div class="container a4-size bg-dark" id="myTable' . $i . '">';
+                echo '<div class="container a4-size */bg-dark" id="myTable' . $i . '">';
                 echo '<table style="margin: 0 auto; table-layout: fixed;">';
 
                 for ($row = 0; $row < $itemsPerColumn; $row++) {
@@ -141,7 +141,7 @@
             $itemsPerColumnBlkg = 3; // Number of items per column
 
             for ($i = 0; $i < $numItemsBlkg; $i += $itemsPerRowBlkg * $itemsPerColumnBlkg) {
-                echo '<div class="container a4-size bg-dark" id="myTableBlkg' . $i . '">';
+                echo '<div class="container a4-size */bg-dark" id="myTableBlkg' . $i . '">';
                 echo '<table style="margin: 0 auto; table-layout: fixed;">';
 
                 for ($row = 0; $row < $itemsPerColumnBlkg; $row++) {
