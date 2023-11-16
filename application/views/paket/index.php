@@ -92,7 +92,14 @@
             columns: [{
                     data: 'null',
                     render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.travel + '</p>';
+                        var logorosPath = '<?php echo base_url("assets/img/logos/logorosbg.jpg"); ?>';
+                        var logonipPath = '<?php echo base_url("assets/img/logos/logonipbg.jpg"); ?>';
+                        if (row.travel == 'Rosana Travel') {
+                            return '<img src="' + logorosPath + '" alt="Image" class="img-fluid border-radius-lg" style="max-width: 60px; max-height: 60px;">';
+                        } else {
+                            return '<img src="' + logonipPath + '" alt="Image" class="img-fluid border-radius-lg" style="max-width: 60px; max-height: 60px;">';
+                        }
+                        // return '<p class="text-xs font-weight-bold mb-0">' + row.travel + '</p>';
                     },
                 }, {
                     data: 'paket_img',
