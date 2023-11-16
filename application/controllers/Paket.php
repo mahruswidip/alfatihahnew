@@ -149,6 +149,7 @@ class Paket extends CI_Controller
                     'nama_program' => $this->input->post('nama_program'),
                     'lama_hari' => $this->input->post('lama_hari'),
                     'kategori' => $this->input->post('kategori'),
+                    'travel' => $this->input->post('travel'),
                     'paket' => $this->input->post('paket'),
                     'hotel_mekkah' => $this->input->post('hotel_mekkah'),
                     'hotel_madinah' => $this->input->post('hotel_madinah'),
@@ -162,6 +163,7 @@ class Paket extends CI_Controller
                     'sudah_termasuk' => $this->input->post('sudah_termasuk'),
                     'belum_termasuk' => $this->input->post('belum_termasuk'),
                     'tampilan' => $this->input->post('tampilan'),
+                    'publish' => ($this->input->post('publish') === 'on') ? 1 : 0,
                     'paket_img' => $this->input->post('paket_img'),
                 );
 

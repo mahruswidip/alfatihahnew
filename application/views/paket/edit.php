@@ -26,7 +26,6 @@
                                         foreach ($travel_values as $value => $display_text) {
                                             $selected = "";
 
-                                            // Check if there is input post data for 'travel'
                                             if ($this->input->post('travel') == $value) {
                                                 $selected = 'selected="selected"';
                                             }

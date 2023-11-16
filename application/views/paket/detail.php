@@ -61,8 +61,7 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <a href="<?php echo site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket'] ?>" class="btn btn-primary mt-3" style="position: absolute; bottom: 0px; right: 10px;">Cetak Label
-                                        Koper</a>
+                                    <a href="<?php echo site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket'] ?>" class="btn btn-primary mt-3" style="position: absolute; bottom: 0px; right: 10px;"><i class="fas fa-print me-2" aria-hidden="true"></i> Cetak Label Koper</a>
                                 </div>
                             </div>
                         </div>
@@ -80,10 +79,10 @@
                             <h6>Daftar Jamaah</h6>
                             <p class="text-xs">Total Jamaah: <?php echo count($record); ?></p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2 justify-content-end">
                             <form action="<?php echo site_url() . 'paket/detail/' . $paket[0]['id_paket'] ?>" method="post" enctype="multipart/form-data">
                                 <input type="text" name="link_grup_whatsapp" value="<?php echo $this->input->post('link_grup_whatsapp'); ?>" class="form-control mb-2" placeholder="Link Grup Whatsapp" id="link_grup_whatsapp" />
-                                <button type="submit" class="btn btn-success"><i class="fa fa-gear me-2" aria-hidden="true"></i>Set Link Grup WA</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-gear me-2" aria-hidden="true"></i>Set Grup WA</button>
                             </form>
                         </div>
                     </div>
