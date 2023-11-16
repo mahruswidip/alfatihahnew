@@ -189,18 +189,19 @@
         </div>
     </div>
 </div>
-
 <script>
     function printToJpg(tableId) {
         // Use html2canvas to convert the specified table to an image
-        html2canvas(document.getElementById(tableId)).then(canvas => {
+        html2canvas(document.getElementById(tableId), {
+            scale: 4
+        }).then(canvas => {
             // Create an anchor tag to trigger the download
             var anchorTag = document.createElement("a");
             document.body.appendChild(anchorTag);
 
-            // Set the download attributes
+            // Set the download attributes with improved quality
             anchorTag.download = "table_image.jpg";
-            anchorTag.href = canvas.toDataURL('image/jpeg');
+            anchorTag.href = canvas.toDataURL('image/jpeg', 1.0); // Set quality to 1.0 for maximum quality
 
             // Trigger the download
             anchorTag.click();
