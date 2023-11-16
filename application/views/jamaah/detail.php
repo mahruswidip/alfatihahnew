@@ -1,7 +1,8 @@
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-lg-8">
-            <div class="row">
+            <div class="row" id="infojamaah">
                 <div class="col-xl-2 mb-xl-0 mb-4">
                     <div class="card bg-transparent shadow-xl">
                         <img src="<?php echo base_url() . 'assets/images/' . $jamaah['jamaah_img']; ?>" class="img-fluid border-radius-lg" alt="Responsive image">
@@ -26,22 +27,32 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body pt-0 p-3 mt-3 mx-2">
-                                    <span class="text-xs">Nama Jamaah</span>
-                                    <h6 class="mb-0"><?php echo $jamaah['nama_jamaah']; ?></h6>
-                                    <span class="text-xs">NIK</span>
-                                    <h6 class="mb-0"><?php echo $jamaah['nik']; ?></h6>
-                                    <span class="text-xs">Nomor Paspor</span>
-                                    <h6 class="mb-0"><?php echo $jamaah['nomor_paspor'] ?></h6>
-                                    <span class="text-xs">Nomor Telepon</span>
-                                    <h6 class="mb-0"><?php echo $jamaah['nomor_telepon'] ?></h6>
-                                    <span class="text-xs">Email</span>
-                                    <h6 class="mb-0"><?php echo $jamaah['email'] ?></h6>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <span class="text-xs">Nama Jamaah</span>
+                                            <h6 class="mb-0"><?php echo $jamaah['nama_jamaah']; ?></h6>
+                                            <span class="text-xs">NIK</span>
+                                            <h6 class="mb-0"><?php echo $jamaah['nik']; ?></h6>
+                                            <span class="text-xs">Nomor Paspor</span>
+                                            <h6 class="mb-0"><?php echo $jamaah['nomor_paspor'] ?></h6>
+                                            <span class="text-xs">Nomor Telepon</span>
+                                            <h6 class="mb-0"><?php echo $jamaah['nomor_telepon'] ?></h6>
+                                            <span class="text-xs">Email</span>
+                                            <h6 class="mb-0"><?php echo $jamaah['email'] ?></h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <img src="<?php echo base_url() . 'assets/images/qr_uuid/' . $jamaah['qr_code_benar']; ?>" class="img-fluid border-radius-lg" alt="QR CODE">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <button class="btn btn-primary" onclick="printToJpg('infojamaah')">Cetak Kartu Jamaah</button>
         </div>
     </div>
     <div class="row">
@@ -74,3 +85,25 @@
         </div>
     </div>
 </div>
+<script>
+    function printToJpg(rowId) {
+        // Use html2canvas to convert the specified row to an image
+        html2canvas(document.getElementById(rowId), {
+            scale: 4
+        }).then(canvas => {
+            // Create an anchor tag to trigger the download
+            var anchorTag = document.createElement("a");
+            document.body.appendChild(anchorTag);
+
+            // Set the download attributes with improved quality
+            anchorTag.download = "infojamaah_image.jpg";
+            anchorTag.href = canvas.toDataURL('image/jpeg', 1.0); // Set quality to 1.0 for maximum quality
+
+            // Trigger the download
+            anchorTag.click();
+
+            // Remove the temporary anchor tag
+            document.body.removeChild(anchorTag);
+        });
+    }
+</script>
