@@ -254,6 +254,25 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="<?php echo base_url('assets'); ?>/img/icons/flags/GB.png" alt="Country flag">
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Kantor Cabang:</p>
+                                            <h6 class="text-sm mb-0">Jakarta</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Jamaah:</p>
+                                        <h6 class="text-sm mb-0 timer" data-from="0" data-to="<?php echo $jamaah_jakarta ?>" data-speed="2531" data-countToOptions='{"formatter": "currencyFormatter"}'></h6>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
