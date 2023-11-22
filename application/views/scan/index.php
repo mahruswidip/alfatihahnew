@@ -65,6 +65,37 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-7">
+            <div class="card px-4 py-5">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>Foto</th>
+                            <th>Nama Jamaah</th>
+                            <th>Kehadiran</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($jamaah as $p) { ?>
+                                <tr>
+                                    <td><img class="img-fluid" style="max-width: 100px; max-height: 100px;" src="<?php echo base_url() . 'assets/images/' . $p['jamaah_img']; ?>" alt=""></td>
+                                    <td><?php echo $p['nama_jamaah']; ?></td>
+                                    <td><?php if ($p['kehadiran'] == 'Hadir') {
+                                            echo '<span class="badge bg-gradient-success">Hadir</span>';
+                                        } else {
+                                            echo '<span class="badge bg-gradient-danger">Tidak Hadir / Belum Hadir</span>';
+                                            echo '<span style="font-size:0.75rem;" class="px-3 py-2 badge badge-pill badge-danger">Tidak Hadir / Belum Hadir</span>';
+                                        } ?></td>
+                                    <!-- <td><a href="<?php echo site_url('jamaah/edit_kehadiran/' . $p['id_jamaah']); ?>" class="btn btn-danger"><span class="fa fa-pencil"></span></a></td> -->
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <div class="pull-right">
+                        <?php echo $this->pagination->create_links(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Include jQuery -->

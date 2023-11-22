@@ -89,6 +89,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link " href="<?php echo site_url(''); ?>artikel/index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Artikel</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>keberangkatan/index">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
@@ -113,27 +121,7 @@
                     </a>
                 </li>
                 <hr>
-                <!-- <li class="nav-item">
-                    <a class="nav-link " href="./pages/rtl.html">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">RTL</span>
-                    </a>
-                </li>
-                <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="./pages/profile.html">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Profile</span>
-                    </a>
-                </li> -->
+
                 <?php if ($this->session->userdata('user_level') == '1') {
                     echo '<li class="nav-item"><a class="nav-link" href="' . base_url('scan/index') . '"><div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"><i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i></div><span class="nav-link-text ms-1">Scan Kehadiran Manasik</span></a></li>';
                 } else {
