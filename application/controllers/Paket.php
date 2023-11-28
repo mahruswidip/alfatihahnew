@@ -108,29 +108,6 @@ class Paket extends CI_Controller
             $this->session->set_flashdata('error', 'Ukuran Tidak boleh lebih dari 5 MB');
             redirect('paket/add');
         }
-
-        // $user_id = $this->session->userdata('user_id');
-        // if (isset($_POST) && count($_POST) > 0) {
-        //     $params = array(
-        //         'nama_program' => $this->input->post('nama_program'),
-        //         'paket' => $this->input->post('paket'),
-        //         'hotel_mekkah' => $this->input->post('hotel_mekkah'),
-        //         'hotel_madinah' => $this->input->post('hotel_madinah'),
-        //         'bintang_mekkah' => $this->input->post('bintang_mekkah'),
-        //         'bintang_madinah' => $this->input->post('bintang_madinah'),
-        //         'uang_muka' => $this->input->post('uang_muka'),
-        //         'harga_paket' => $this->input->post('harga_paket'),
-        //         'sudah_termasuk' => $this->input->post('sudah_termasuk'),
-        //         'belum_termasuk' => $this->input->post('belum_termasuk'),
-        //         'paket_img' => $this->input->post('paket_img'),
-        //         'created_by' => $user_id,
-        //     );
-        //     $paket_id = $this->Paket_model->add_paket($params);
-        //     redirect('paket/index');
-        // } else {
-        //     $data['_view'] = 'paket/add';
-        //     $this->load->view('layouts/main', $data);
-        // }
     }
 
     /*
@@ -215,11 +192,8 @@ class Paket extends CI_Controller
     {
         $paket = $this->Paket_model->get_paket($id_paket);
 
-        // check if the paket exists before trying to delete it
-        if (isset($paket['id_paket'])) {
-            $this->Paket_model->delete_paket($id_paket);
-            redirect('paket/index');
-        } else
-            show_error('The paket you are trying to delete does not exist.');
+        $this->Paket_model->delete_paket($id_paket);
+        unlink(FCPATH . 'assets/images/' . $paket['paket_img']);
+        redirect('paket/index');
     }
 }
