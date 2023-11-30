@@ -14,9 +14,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul Artikel</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Konten</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Travel</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 long-text">Konten</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created at</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
 
@@ -50,7 +50,10 @@
 
     .long-text {
         max-width: 200px;
-        white-space: pre-wrap;
+        /* Sesuaikan dengan lebar maksimum yang diinginkan */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>
 <!-- Include jQuery and DataTables libraries -->
@@ -104,19 +107,19 @@
                 {
                     data: 'null',
                     render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.judul_artikel + '</p>' + '<p class="text-xs text-secondary mb-0">' + row.nomor_paspor + '</p>';
+                        return '<p class="text-xs font-weight-bold mb-0">' + row.kategori + '</p>';
+                    },
+                },
+                {
+                    data: 'null',
+                    render: function(data, type, row) {
+                        return '<p class="text-xs font-weight-bold mb-0">' + row.judul_artikel + '</p>' + '<p class="text-xs text-secondary mb-0">' + row.travel + '</p>';
                     },
                 },
                 {
                     data: 'null',
                     render: function(data, type, row) {
                         return '<p class="text-xs font-weight-bold mb-0">' + row.konten + '</p>';
-                    },
-                },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0 long-text">' + row.travel + '</p>';
                     },
                 },
                 {

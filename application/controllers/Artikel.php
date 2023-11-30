@@ -50,6 +50,8 @@ class Artikel extends CI_Controller
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
         $user_id = $this->session->userdata('user_id');
 
+        $isi_artikel = $this->input->post('konten');
+
         $this->upload->initialize($config);
         if (!empty($_FILES['artikel_img']['name'])) {
             if ($this->upload->do_upload('artikel_img')) {
@@ -68,8 +70,9 @@ class Artikel extends CI_Controller
                 $gambar = $gbr['file_name'];
 
                 $params = array(
+                    'kategori' => $this->input->post('kategori'),
                     'travel' => $this->input->post('travel'),
-                    'konten' => $this->input->post('konten'),
+                    'konten' => $isi_artikel,
                     'artikel_img' => $this->input->post('artikel_img'),
                     'judul_artikel' => $this->input->post('judul_artikel'),
 
@@ -91,38 +94,56 @@ class Artikel extends CI_Controller
      * Editing a artikel
      */
 
-
     public function edit($id_artikel)
     {
-        // Memeriksa apakah artikel ada sebelum mencoba mengeditnya
+        // Ambil data artikel berdasarkan ID
         $data['artikel'] = $this->Artikel_model->get_artikel($id_artikel);
 
-        if (isset($data['artikel']['id_artikel'])) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Mendapatkan data dari formulir edit
-                $tanggal_artikel = $this->input->post('tanggal_artikel');
-                $is_aktif = ($this->input->post('is_aktif') == 'on') ? 1 : 0;
-                $tanggal_manasik = $this->input->post('tanggal_manasik');
+        // Validasi Form
+        $this->form_validation->set_rules('judul_artikel', 'Judul Artikel', 'required');
+        $this->form_validation->set_rules('travel', 'Travel', 'required');
+        $this->form_validation->set_rules('kategori', 'Kategori Artikel', 'required');
+        $this->form_validation->set_rules('konten', 'Konten', 'required');
 
-                // Menyiapkan data untuk diperbarui
-                $params = array(
-                    'tanggal_artikel' => $tanggal_artikel,
-                    'is_aktif' => $is_aktif,
-                    'tanggal_manasik' => $tanggal_manasik,
-                );
-
-                // Memperbarui data artikel berdasarkan ID
-                $this->Artikel_model->update_artikel($id_artikel, $params);
-
-                // Mengalihkan pengguna ke halaman index setelah pembaruan
-                redirect('artikel/index');
-            } else {
-                // Menampilkan halaman edit dengan data artikel
-                $data['_view'] = 'artikel/edit';
-                $this->load->view('layouts/main', $data);
-            }
+        if ($this->form_validation->run() == FALSE) {
+            // Tampilkan form edit dengan data artikel
+            $data['_view'] = 'artikel/edit';
+            $this->load->view('layouts/main', $data);
         } else {
-            show_error('The artikel you are trying to edit does not exist.');
+            // Proses penyimpanan perubahan
+            $update_data = array(
+                'judul_artikel' => $this->input->post('judul_artikel'),
+                'travel' => $this->input->post('travel'),
+                'kategori' => $this->input->post('kategori'),
+                'konten' => $this->input->post('konten'),
+                // Tambahkan field lainnya sesuai kebutuhan
+            );
+
+            // Jika ada file gambar yang diunggah
+            if (!empty($_FILES['artikel_img']['name'])) {
+                // Proses upload gambar
+                $config['upload_path'] = './path/to/upload/directory/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = 2048; // 2 MB
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('artikel_img')) {
+                    $upload_data = $this->upload->data();
+                    $update_data['artikel_img'] = $upload_data['file_name'];
+                } else {
+                    // Handle error upload jika diperlukan
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                    die();
+                }
+            }
+
+            // Update data artikel ke dalam database
+            $this->Artikel_model->update_artikel($id_artikel, $update_data);
+
+            // Redirect atau tampilkan pesan sukses
+            redirect('artikel/index');
         }
     }
 

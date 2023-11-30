@@ -39,8 +39,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="form-control-label">Kategori Artikel</label>
+                                    <input type="text" class="form-control" name="kategori" value="<?php echo $this->input->post('kategori'); ?>" required><br>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label class="form-control-label">Konten</label>
-                                    <input type="text" class="form-control" name="konten" value="<?php echo $this->input->post('konten'); ?>" required><br>
+                                    <textarea id="editor" name="konten"><?php echo $this->input->post('konten'); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -61,3 +67,14 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="<?php echo base_url('assets'); ?>/js/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>

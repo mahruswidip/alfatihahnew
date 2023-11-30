@@ -46,24 +46,28 @@ class Artikel_model extends CI_Model
     /*
      * function to add new artikel
      */
-    function add_artikel($params, $gambar)
+    public function add_artikel($params, $gambar)
     {
-        var_dump($gambar);
-        // exit();
-        $this->db->set('travel', $params['travel']);
-        $this->db->set('judul_artikel', $params['judul_artikel']);
-        $this->db->set('konten', $params['konten']);
-        $this->db->set('artikel_img', $gambar);
-        $this->db->insert('artikel');
+        $data = array(
+            'kategori' => $params['kategori'],
+            'travel' => $params['travel'],
+            'judul_artikel' => $params['judul_artikel'],
+            'konten' => $params['konten'],
+            'artikel_img' => $gambar
+        );
+
+        $this->db->insert('artikel', $data);
     }
 
     /*
      * function to update artikel
      */
-    function update_artikel($id_artikel, $params)
+
+    public function update_artikel($id_artikel, $data)
     {
+        // Update data artikel berdasarkan ID
         $this->db->where('id_artikel', $id_artikel);
-        return $this->db->update('artikel', $params);
+        $this->db->update('artikel', $data);
     }
 
     /*

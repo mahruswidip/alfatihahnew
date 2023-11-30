@@ -1,45 +1,80 @@
+<!-- Edit Artikel -->
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
-                        <p class="mb-0">Edit Keberangkatan</p>
-
+                        <p class="mb-0">Edit Artikel</p>
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- <?php var_dump($keberangkatan) ?> -->
-                    <form action="<?php echo site_url() . 'keberangkatan/edit/' . $keberangkatan['id_keberangkatan'] ?>" method="post" enctype="multipart/form-data">
-                        <p class="text-uppercase text-sm">Detail Keberangkatan</p>
+                    <form action="<?php echo site_url() . 'artikel/edit/' . $artikel['id_artikel']; ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <input type="hidden" name="id_keberangkatan" value="<?php echo $keberangkatan['id_keberangkatan']; ?>">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Tanggal Keberangkatan</label>
-                                    <input type="date" class="form-control" name="tanggal_keberangkatan" value="<?php echo $keberangkatan['tanggal_keberangkatan']; ?>" required><br>
+                                    <label class="form-control-label">Judul Artikel</label>
+                                    <input type="text" class="form-control" name="judul_artikel" value="<?php echo $artikel['judul_artikel']; ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="form-control-label">Travel</label>
+                                    <select name="travel" class="form-control">
+                                        <option value="">Pilih Travel</option>
+                                        <?php
+                                        $travel_values = array(
+                                            'Rosana Travel' => 'Rosana Travel',
+                                            'Nipindo Travel' => 'Nipindo Travel',
+                                        );
+
+                                        foreach ($travel_values as $value => $display_text) {
+                                            $selected = ($value == $artikel['travel']) ? ' selected="selected"' : "";
+                                            echo '<option value="' . $value . '" ' . $selected . '>' . $display_text . '</option>';
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Status</label>
-                                    <div class="form-check form-switch">
-                                        <input type="checkbox" class="form-check-input" id="is_aktif" name="is_aktif" <?php echo ($keberangkatan['is_aktif'] == 1) ? 'checked' : ''; ?>>
-                                    </div>
+                                    <label class="form-control-label">Kategori Artikel</label>
+                                    <input type="text" class="form-control" name="kategori" value="<?php echo $artikel['kategori']; ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Tanggal Manasik</label>
-                                    <input type="date" class="form-control" name="tanggal_manasik" value="<?php echo $keberangkatan['tanggal_manasik']; ?>" required><br>
+                                    <label class="form-control-label">Konten</label>
+                                    <textarea id="editor" name="konten" required><?php echo $artikel['konten']; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Foto Konten</label>
+                                    <br>
+                                    <input type="file" class="form-control" name="artikel_img">
                                 </div>
                             </div>
                         </div>
                         <hr class="horizontal dark mt-0">
-                        <button class="btn btn-primary btn-sm ms-auto" type="submit">Update</button>
+                        <button class="btn btn-primary btn-sm ms-auto" type="submit">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Script CKEditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
