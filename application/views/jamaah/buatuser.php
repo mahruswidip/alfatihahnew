@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo site_url() . 'jamaah/buatuser' . $jamaah['id_jamaah'] ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo site_url() . 'jamaah/buatuser/' . $jamaah['id_jamaah'] ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <?php if ($this->session->flashdata('fk_id_jamaah')) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
