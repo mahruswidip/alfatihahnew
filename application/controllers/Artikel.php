@@ -122,7 +122,7 @@ class Artikel extends CI_Controller
             // Jika ada file gambar yang diunggah
             if (!empty($_FILES['artikel_img']['name'])) {
                 // Proses upload gambar
-                $config['upload_path'] = './path/to/upload/directory/';
+                $config['upload_path'] = './assets/images/artikel/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['max_size'] = 2048; // 2 MB
 
