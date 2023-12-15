@@ -70,6 +70,12 @@ class Artikel_model extends CI_Model
         $this->db->update('artikel', $data);
     }
 
+    public function edit_artikel($id, $data)
+    {
+        $this->db->where('id_artikel', $id);
+        $this->db->update('artikel', $data);
+    }
+
     /*
      * function to delete artikel
      */
