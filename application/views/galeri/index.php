@@ -15,6 +15,7 @@
                                 <th>Foto</th>
                                 <th>Nama</th>
                                 <th>Ukuran</th>
+                                <th>Travel</th> <!-- Add this line for the new column -->
                                 <th>Actions</th>
                             </thead>
                             <tbody>
@@ -23,6 +24,7 @@
                                         <td><img class="img-fluid" style="max-width: 100px; max-height: 100px;" src="<?php echo base_url() . 'assets/images/galeri/' . $g['nama']; ?>" alt=""></td>
                                         <td><?php echo $g['nama']; ?></td>
                                         <td><?php echo $g['ukuran']; ?> Kb</td>
+                                        <td><?php echo $g['travel']; ?></td> <!-- Display the travel field -->
                                         <td>
                                             <a href="<?php echo site_url('galeri/remove/' . $g['id']); ?>" class="btn btn-danger"><span class="fa fa-trash"></span></a>
                                         </td>
@@ -35,9 +37,20 @@
             </div>
         </div>
     </div>
+
     <div class="container" id="container">
         <div id="actions" class="row">
             <div class="col-lg-7">
+                <form action="<?php echo site_url() . 'galeri/gambar_upload' ?>" method="post" enctype="multipart/form-data">
+                    <div class="col-lg-3">
+                        <label for="travel">Travel:</label>
+                        <select class="form-select" id="travelDropdown" name="travel">
+                            <option value="Rosana Travel">Rosana Travel</option>
+                            <option value="Nipindo Travel">Nipindo Travel</option>
+                        </select>
+                    </div>
+                </form>
+                <br>
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button">
                     <i class="glyphicon glyphicon-plus"></i>
@@ -191,6 +204,14 @@
     previewNode.parentNode.removeChild(previewNode);
 
     var myDropzone = new Dropzone(document.body, {
+        init: function() {
+            this.on("sending", function(file, xhr, formData) {
+                // Get the travel value from your dropdown or input
+                var travelValue = document.getElementById("travelDropdown").value;
+                // Set the travel value in the formData
+                formData.append("travel", travelValue);
+            });
+        },
         url: "<?php echo site_url('galeri/gambar_upload'); ?>", // mengatur url
         thumbnailWidth: 80,
         thumbnailHeight: 80,

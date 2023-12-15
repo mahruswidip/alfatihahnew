@@ -25,19 +25,32 @@ class Galeri extends CI_Controller
 
     function gambar_upload()
     {
-
         if (!empty($_FILES)) {
             $tempFile = $_FILES['file']['tmp_name'];
             $fileName = $_FILES['file']['name'];
             $fileType = $_FILES['file']['type'];
             $fileSize = $_FILES['file']['size'];
+            $travel = $this->input->post('travel'); // Assuming you have a form field for 'travel'
+
             $targetPath = './assets/images/galeri/';
             $targetFile = $targetPath . $fileName;
 
             move_uploaded_file($tempFile, $targetFile);
 
-            $this->db->insert('img_dropzone', array('nama' => $fileName, 'tipe' => $fileType, 'ukuran' => $fileSize));
+            $data = array(
+                'nama' => $fileName,
+                'tipe' => $fileType,
+                'ukuran' => $fileSize,
+                'travel' => $travel,
+            );
+
+            // echo '<pre>';
+            // print_r($data);
+            // exit();
+
+            $this->Galeri_model->insert_galeri($data);
         }
+
         redirect('galeri/index');
     }
 

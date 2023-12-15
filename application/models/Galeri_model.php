@@ -1,6 +1,10 @@
 <?php
 class Galeri_model extends CI_Model
 {
+    function insert_galeri($data)
+    {
+        $this->db->insert('img_dropzone', $data);
+    }
     function get_all_galeri($params = array())
     {
         $this->db->order_by('img_dropzone.id', 'desc');
