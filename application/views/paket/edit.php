@@ -163,11 +163,17 @@
                                 echo '</div>';
                             }
                             ?>
-                            <div class="col-md-3 d-none">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Gambar Paket</label>
                                     <br>
-                                    <input type="text" name="paket_img" value="<?php echo ($this->input->post('paket_img') ? $this->input->post('paket_img') : $paket['paket_img']); ?>" class="form-control" id="paket_img" />
+                                    <input type="file" class="form-control" name="paket_img">
+                                    <!-- Menampilkan gambar saat mengedit -->
+                                    <?php if (!empty($paket['paket_img'])) : ?>
+                                        <img src="<?php echo base_url('assets/images/' . $paket['paket_img']); ?>" alt="Paket Image" class="img-thumbnail mt-2" style="max-width: 100%;">
+                                    <?php endif; ?>
+                                    <!-- Input tersembunyi untuk menyimpan nama gambar saat ini -->
+                                    <input type="hidden" name="paket_img" value="<?php echo ($this->input->post('paket_img') ? $this->input->post('paket_img') : $paket['paket_img']); ?>" />
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-0">

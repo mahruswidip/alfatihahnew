@@ -110,17 +110,54 @@ class Paket extends CI_Controller
         }
     }
 
-    /*
-     * Editing a luasan
-     */
     function edit($id_paket)
     {
-        // check if the luasan exists before trying to edit it
+        // Check if the paket exists before trying to edit it
         $data['paket'] = $this->Paket_model->get_paket($id_paket);
         $data['keberangkatan'] = $this->Paket_model->get_tanggal_keberangkatan();
 
         if (isset($data['paket']['id_paket'])) {
+            $config['upload_path'] = './assets/images/'; //path folder
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+            $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+            $user_id = $this->session->userdata('user_id');
+
+            $this->upload->initialize($config);
+
             if (isset($_POST) && count($_POST) > 0) {
+                if (!empty($_FILES['paket_img']['name'])) {
+                    if ($this->upload->do_upload('paket_img')) {
+                        // Delete existing image if any
+                        $existing_paket = $this->Paket_model->get_paket($id_paket);
+                        $existing_image_path = './assets/images/' . $existing_paket['paket_img'];
+                        if (file_exists($existing_image_path)) {
+                            unlink($existing_image_path);
+                        }
+
+                        $gbr = $this->upload->data();
+
+                        // Compress Image
+                        $config['image_library'] = 'gd2';
+                        $config['source_image'] = './assets/images/' . $gbr['file_name'];
+                        $config['create_thumb'] = FALSE;
+                        $config['maintain_ratio'] = FALSE;
+                        $config['quality'] = '60%';
+                        $config['width'] = '20%';
+                        $config['max_size'] = '5000';
+                        $config['new_image'] = './assets/images/' . $gbr['file_name'];
+                        $this->load->library('image_lib', $config);
+                        $this->image_lib->resize();
+                        $gambar = $gbr['file_name'];
+                    } else {
+                        $error = $this->upload->display_errors();
+                        $this->session->set_flashdata('error', $error);
+                        redirect('paket/index');
+                    }
+                } else {
+                    // No new image uploaded, use the existing one
+                    $gambar = $this->input->post('paket_img');
+                }
+
                 $params = array(
                     'fk_id_keberangkatan' => $this->input->post('fk_id_keberangkatan'),
                     'nama_program' => $this->input->post('nama_program'),
@@ -141,7 +178,7 @@ class Paket extends CI_Controller
                     'belum_termasuk' => $this->input->post('belum_termasuk'),
                     'tampilan' => $this->input->post('tampilan'),
                     'publish' => ($this->input->post('publish') === 'on') ? 1 : 0,
-                    'paket_img' => $this->input->post('paket_img'),
+                    'paket_img' => $gambar,
                 );
 
                 $this->Paket_model->update_paket($id_paket, $params);
@@ -150,9 +187,12 @@ class Paket extends CI_Controller
                 $data['_view'] = 'paket/edit';
                 $this->load->view('layouts/main', $data);
             }
-        } else
+        } else {
             show_error('The paket you are trying to edit does not exist.');
+        }
     }
+
+
 
     function detail($id_paket)
     {
