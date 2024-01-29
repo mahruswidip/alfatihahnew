@@ -92,10 +92,13 @@
                             echo '<td>';
                             // echo '<img src="' . base_url('assets/img/labelkoper/depan.jpg') . '" style="width: 350px;">';
                             if ($paket[0]['travel'] == 'Rosana Travel') {
-                                echo '<img src="' . base_url('assets/img/labelkoper/depan.jpg') . '" style="width: 350px;">';
+                                if ($paket[0]['paket'] == 'Semi VIP') {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/depansvip.jpg') . '" style="width: 350px;">';
+                                } else {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/depan.jpg') . '" style="width: 350px;">';
+                                }
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/depannip.jpg') . '" style="width: 350px;">';
-                                # code...
                             };
                             echo '<img src="' . (isset($label[$index]['jamaah_img']) ? base_url('assets/images/' . $label[$index]['jamaah_img']) : '') . '" class="foto img-fluid"  style="border-radius: 10px; object-fit: cover; height: 100px; width: 70px">';
                             echo '<div class="row nama">';
@@ -108,10 +111,13 @@
                         } else {
                             echo '<td>';
                             if ($paket[0]['travel'] == 'Rosana Travel') {
-                                echo '<img src="' . base_url('assets/img/labelkoper/depan.jpg') . '" style="width: 350px;">';
+                                if ($paket[0]['paket'] == 'Semi VIP') {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/depansvip.jpg') . '" style="width: 350px;">';
+                                } else {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/depan.jpg') . '" style="width: 350px;">';
+                                }
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/depannip.jpg') . '" style="width: 350px;">';
-                                # code...
                             };
                             echo '</td>';
                         }
@@ -153,7 +159,11 @@
                         if ($indexBlkg < $numItemsBlkg) {
                             echo '<td>';
                             if ($paket[0]['travel'] == 'Rosana Travel') {
-                                echo '<img src="' . base_url('assets/img/labelkoper/belakang.jpg') . '" style="width: 350px;">';
+                                if ($paket[0]['paket'] == 'Semi VIP') {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/belakangsvip.jpg') . '" style="width: 350px;">';
+                                } else {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/belakang.jpg') . '" style="width: 350px;">';
+                                }
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/belakangnip.jpg') . '" style="width: 350px;">';
                             };
@@ -165,7 +175,11 @@
                         } else {
                             echo '<td>';
                             if ($paket[0]['travel'] == 'Rosana Travel') {
-                                echo '<img src="' . base_url('assets/img/labelkoper/belakang.jpg') . '" style="width: 350px;">';
+                                if ($paket[0]['paket'] == 'Semi VIP') {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/belakangsvip.jpg') . '" style="width: 350px;">';
+                                } else {
+                                    echo '<img src="' . base_url('assets/img/labelkoper/belakang.jpg') . '" style="width: 350px;">';
+                                }
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/belakangnip.jpg') . '" style="width: 350px;">';
                             };
