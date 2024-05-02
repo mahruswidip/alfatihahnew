@@ -121,6 +121,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link " href="<?php echo site_url(''); ?>pendaftar/index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-archive-2 text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Pendaftar</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>galeri/index">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-collection text-secondary text-sm opacity-10"></i>
@@ -210,7 +218,7 @@
     </main>
 
     <!--   Core JS Files   -->
-    <!-- Bootstrap JS (Popper.js included) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- DataTables JS with Bootstrap 5 support -->
@@ -218,7 +226,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script src="<?php echo base_url('assets'); ?>/js/core/popper.min.js"></script>
-    <script src="<?php echo base_url('assets'); ?>/js/core/bootstrap.min.js"></script>
+    <!-- <script src="<?php echo base_url('assets'); ?>/js/core/bootstrap.min.js"></script> -->
     <script src="<?php echo base_url('assets'); ?>/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/js/plugins/chartjs.min.js"></script>
@@ -226,7 +234,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
         var label_line = <?php echo json_encode($label_line); ?>;
@@ -382,6 +389,7 @@
             },
         });
     </script>
+
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {

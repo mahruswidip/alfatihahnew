@@ -98,10 +98,10 @@ class Login extends CI_Controller
     $dataAdmin = array();
     $dataLogin = $this->db->query("SELECT *,  CASE WHEN DATE_ADD(keberangkatan.tanggal_keberangkatan, INTERVAL paket.lama_hari DAY) < CURDATE()   THEN '0'   ELSE CONCAT('', record_keberangkatan.id_record) END AS id_record, keberangkatan.tanggal_keberangkatan, record_keberangkatan.created_at FROM tbl_users LEFT JOIN jamaah ON tbl_users.fk_id_jamaah = jamaah.id_jamaah LEFT JOIN (SELECT id_jamaah, MAX(created_at) AS max_created_at FROM record_keberangkatan GROUP BY id_jamaah) AS max_created_at_table ON jamaah.id_jamaah = max_created_at_table.id_jamaah LEFT JOIN record_keberangkatan ON max_created_at_table.id_jamaah = record_keberangkatan.id_jamaah AND max_created_at_table.max_created_at = record_keberangkatan.created_at LEFT JOIN paket ON record_keberangkatan.id_paket = paket.id_paket LEFT JOIN keberangkatan ON paket.fk_id_keberangkatan = keberangkatan.id_keberangkatan WHERE tbl_users.user_email = '" . $email . "' AND tbl_users.user_password = '" . $password . "'");
     // $dataLogin = $this->db->query("SELECT * FROM tbl_users LEFT JOIN jamaah ON tbl_users.fk_id_jamaah = jamaah.id_jamaah where user_email = '" . $email . "' AND user_password = '" . $password . "'");
-    
+
     // sudah ada filter ambil terbaru
     // SELECT *,  CASE WHEN DATE_ADD(keberangkatan.tanggal_keberangkatan, INTERVAL paket.lama_hari DAY) < CURDATE()   THEN '0'   ELSE CONCAT('', record_keberangkatan.id_record) END AS id_record, keberangkatan.tanggal_keberangkatan, record_keberangkatan.created_at FROM tbl_users LEFT JOIN jamaah ON tbl_users.fk_id_jamaah = jamaah.id_jamaah LEFT JOIN (SELECT id_jamaah, MAX(created_at) AS max_created_at FROM record_keberangkatan GROUP BY id_jamaah) AS max_created_at_table ON jamaah.id_jamaah = max_created_at_table.id_jamaah LEFT JOIN record_keberangkatan ON max_created_at_table.id_jamaah = record_keberangkatan.id_jamaah AND max_created_at_table.max_created_at = record_keberangkatan.created_at LEFT JOIN paket ON record_keberangkatan.id_paket = paket.id_paket LEFT JOIN keberangkatan ON paket.fk_id_keberangkatan = keberangkatan.id_keberangkatan WHERE tbl_users.user_email = '3579023010810001' AND tbl_users.user_password = '276ba51206df5d73207265d14bed9de1'
-    
+
     foreach ($dataLogin->result() as $dl) {
       $dataAdmin = $dl;
     }
