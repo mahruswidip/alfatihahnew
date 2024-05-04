@@ -101,6 +101,24 @@ class Pendaftar extends CI_Controller
         echo json_encode($data);
     }
 
+    /*
+     * Menampilkan detail pendaftar beserta form untuk menambahkan data berapa orang
+     */
+    public function detail_pendaftar($id_pendaftar)
+    {
+        // Memeriksa apakah pendaftar ada sebelum mencoba menampilkannya
+        $data['pendaftar'] = $this->Pendaftar_model->get_pendaftar($id_pendaftar);
+
+        if (isset($data['pendaftar']['id_pendaftar'])) {
+            // Menampilkan halaman detail pendaftar
+            $data['_view'] = 'pendaftar/detail_pendaftar';
+            $this->load->view('layouts/main', $data);
+        } else {
+            show_error('The pendaftar you are trying to view does not exist.');
+        }
+    }
+
+
 
 
     /*

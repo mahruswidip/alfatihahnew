@@ -13,11 +13,28 @@
                         <table id="dataTablePendaftar" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pendaftar</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor Telepon</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                    <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th> -->
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nama Pendaftar</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Pesan Apa</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Rencana Jumlah Orang</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nomor Telepon</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Email</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Aksi</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -40,7 +57,7 @@
 
 <!-- DataTable initialization with AJAX -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#dataTablePendaftar').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
@@ -49,54 +66,68 @@
                     "next": ">"
                 },
             },
-            "pageLength": 5,
+            "pageLength": 10,
             ajax: {
                 url: '<?php echo base_url("pendaftar/view"); ?>',
                 type: 'POST',
                 dataSrc: ''
             },
             columns: [{
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.nik + '</p>';
-                    },
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.id_pendaftar + '</p>';
                 },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.nama_pendaftar + '</p>';
-                    },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.nik + '</p>';
                 },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.nomor_telepon + '</p>';
-                    },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.nama_pendaftar + '</p>';
                 },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.email + '</p>';
-                    },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.pesan_apa + '</p>';
                 },
-                // {
-                //     data: null,
-                //     className: 'td-column-right',
-                //     render: function(data, type, row) {
-                //         if (<?php echo $this->session->userdata('user_level'); ?> == '1') {
-                //             var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
-                //             var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
-                //             var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';
-                //             return editButton + ' ' + deleteButton + ' ' + deactiveButton;
-                //         } else {
-                //             return '';
-                //         }
-                //     }
-                // },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.berapa_orang + '</p>';
+                },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.nomor_telepon + '</p>';
+                },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.email + '</p>';
+                },
+            },
+            {
+                data: null,
+                className: 'td-column-right',
+                render: function (data, type, row) {
+                    var deleteButton = '<a href="<?php echo site_url('pendaftar/remove/'); ?>' + row.id_pendaftar + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                    var prosesbutton = '<a href="<?php echo site_url('pendaftar/detail_pendaftar/'); ?>' + row.id_pendaftar + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                    // return editButton + ' ' + deleteButton + ' ' + deactiveButton;
+                    return prosesbutton + ' ' + deleteButton;
+                }
+            },
 
             ],
             "order": [
-                [1, 'asc']
+                [0, 'desc']
             ] // Menyortir berdasarkan kolom dengan indeks 1 (kolom is_aktif) secara descending (nilai 1 akan berada di atas)
         });
     });
