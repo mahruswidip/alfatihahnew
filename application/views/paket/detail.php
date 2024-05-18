@@ -44,7 +44,7 @@
                                     </h6>
                                     <span class="text-xs">Program</span>
                                     <h6 class="mb-0"><?php echo $paket[0]['nama_program']; ?></h6>
-                                    <p class="text-bold"><?php echo $paket[0]['paket']; ?></p>
+                                    <h6 class="mb-0"><?php echo $paket[0]['paket']; ?></h6>
                                     <span class="text-xs">Lama Hari</span>
                                     <h6 class=""><?php echo $paket[0]['lama_hari']; ?>&nbsp; Hari</h6>
                                     <div class="row">
@@ -61,7 +61,35 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <a href="<?php echo site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket'] ?>" class="btn btn-primary mt-3" style="position: absolute; bottom: 0px; right: 10px;"><i class="fas fa-print me-2" aria-hidden="true"></i> Cetak Label Koper</a>
+                                    <?php if ($paket[0]['kategori'] == 'Haji') { ?>
+                                        <span class="text-xs">Lokasi Bus</span>
+                                        <h6><?php echo $paket[0]['bus']; ?></h6>
+                                    <?php } ?>
+                                    <?php if ($paket[0]['kategori'] == 'Haji') { ?>
+                                        <div class="col-md-5 mt-4">
+                                            <form action="<?php echo site_url('paket/tetapkan_bus/' . $paket[0]['id_paket']); ?>" method="post" enctype="multipart/form-data">
+                                                <select name="bus" class="form-control">
+                                                    <option value="">Pilih Bus</option>
+                                                    <?php
+                                                    $bus_values = array(
+                                                        'BUS 1' => 'BUS 1',
+                                                        'BUS 2' => 'BUS 2',
+                                                    );
+
+                                                    foreach ($bus_values as $value => $display_text) {
+                                                        $selected = ($value == $this->input->post('bus')) ? ' selected="selected"' : "";
+                                                        echo '<option value="' . $value . '" ' . $selected . '>' . $display_text . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <button type="submit" class="btn btn-success mt-2"><i class="fa fa-bus me-2" aria-hidden="true"></i>Tetapkan Bus</button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
+
+                                    <a href="<?php echo ($paket[0]['kategori'] == 'Haji') ? site_url() . 'paket/cetak_label_koper_haji/' . $paket[0]['id_paket'] : site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket']; ?>" class="btn btn-primary mt-3" style="position: ; bottom: 10px;">
+                                        <i class="fas fa-print me-2" aria-hidden="true"></i> Cetak Label Koper
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +149,13 @@
         </div>
     </div>
 </div>
-
+<?php if ($this->session->flashdata('setbis')) { ?>
+    <script>
+        window.onload = function() {
+            alert("<?php echo $this->session->flashdata('setbis'); ?>");
+        };
+    </script>
+<?php } ?>
 <script>
     $(document).ready(function() {
         $('#jamaahTable').DataTable({

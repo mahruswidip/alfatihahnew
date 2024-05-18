@@ -101,6 +101,7 @@ class Paket_model extends CI_Model
         return $this->db->update('paket', $params);
     }
 
+
     /*
      * function to delete paket
      */

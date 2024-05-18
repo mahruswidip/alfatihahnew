@@ -212,6 +212,25 @@ class Paket extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
+
+
+    public function tetapkan_bus($id_paket)
+    {
+        // Load the necessary model
+        $this->load->model('Paket_model');
+
+        // Get the bus value from POST data
+        $bus = $this->input->post('bus');
+
+        // Update the bus value in the database
+        $params = array('bus' => $bus);
+        $this->Paket_model->update_paket($id_paket, $params);
+        $this->session->set_flashdata('setbis', 'Bus berhasil ditetapkan');
+
+        // Redirect to the detail page or wherever appropriate
+        redirect('paket/detail/' . $id_paket);
+    }
+
     public function cetak_label_koper($id_paket)
     {
         $data['label'] = $this->Paket_model->get_record_with_this_paket($id_paket);
@@ -222,6 +241,19 @@ class Paket extends CI_Controller
         // exit();
 
         $data['_view'] = 'paket/cetak_label_koper'; // Change this to the view file for printing labels
+        $this->load->view('layouts/main', $data);
+    }
+
+    public function cetak_label_koper_haji($id_paket)
+    {
+        $data['label'] = $this->Paket_model->get_record_with_this_paket($id_paket);
+        $data['paket'] = $this->Paket_model->get_tanggal_keberangkatan_for_detail($id_paket);
+
+        // echo '<pre>';
+        // print_r($data['paket']);
+        // exit();
+
+        $data['_view'] = 'paket/cetak_label_koper_haji'; // Change this to the view file for printing labels
         $this->load->view('layouts/main', $data);
     }
 
