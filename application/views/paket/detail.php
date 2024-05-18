@@ -134,7 +134,7 @@
                                     <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="<?php echo site_url('jamaah/remove_record_keberangkatan/' . $jamaah['id_jamaah']); ?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
                                     <a class="btn btn-link text-dark px-3 mb-0" href="<?php echo site_url('jamaah/edit/' . $jamaah['id_jamaah']); ?>"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                     <?php if ($jamaah['nomor_telepon'] != null) {
-                                        echo '<a href="https://wa.me/62' . $nowa . '?text=Gabung%20bersama%20di%20Grup%20Whatsapp%20Keberangkatan%20Umroh%20Anda%0AKlik%20Link%20dibawah%20Ini%20%3A%20' . $this->session->userdata('link') . '" class="btn btn-link text-success px-3 mb-0"><i class="fa fa-whatsapp text-success me-2" aria-hidden="true"></i>Undang</a>';
+                                        echo '<a href="https://wa.me/62' . $nowa . '?text=Assalamualaikum%20Wr.%20Wb.%0AKami%20dari%20Admin%20PT.%20Rosana%20Grup%0A%0ASilahkan%20segera%20Gabung%20bersama%20di%20Grup%20Whatsapp%20Keberangkatan%20Umroh%20Anda%0A%0AKlik%20Link%20dibawah%20Ini%20%3A' . $this->session->userdata('link') . '" class="btn btn-link text-success px-3 mb-0"><i class="fa fa-whatsapp text-success me-2" aria-hidden="true"></i>Undang</a>';
                                     } else {
                                         echo '<a class="btn btn-link text-secondary px-3 mb-0"><i class="fa fa-whatsapp text-secondary me-2" aria-hidden="true" disabled></i>Undang</a>';
                                     }
