@@ -169,6 +169,10 @@
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/blkgnip.jpg') . '" style="width: 350px;">';
                             };
+                            echo '<h4 class="hotelmekkah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_mekkah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_mekkah']) . '&nbsp;' .  '</h4>';
+                            echo '<h4 class="hotelmadinah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_madinah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_madinah']) . '&nbsp;' . '</h4>';
+                            echo '<h5 class="nomorguide text-dark" style="font-weight:normal;font-size: 0.73rem"><strong>' . ($paket[0]['nomor_guide']) . '</strong></h5>';
+                            echo '</td>';
                         } else {
                             echo '<td>';
                             if ($paket[0]['kategori'] == 'Haji') {
@@ -180,6 +184,9 @@
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/blkgnip.jpg') . '" style="width: 350px;">';
                             };
+                            echo '<h4 class="hotelmekkah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_mekkah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_mekkah']) . '&nbsp;' .  '</h4>';
+                            echo '<h4 class="hotelmadinah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_madinah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_madinah']) . '&nbsp;' . '</h4>';
+                            echo '<h5 class="nomorguide text-dark" style="font-weight:normal;font-size: 0.73rem"><strong>' . ($paket[0]['nomor_guide']) . '</strong></h5>';
                             echo '</td>';
                         }
                     }
