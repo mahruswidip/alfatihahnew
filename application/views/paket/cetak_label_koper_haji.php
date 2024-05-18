@@ -140,6 +140,7 @@
 <div class="container-fluid" id="kartubelakang">
     <div class="card" id="cardGroup_belakang">
         <div class="card-body">
+
             <?php
             // Assuming $label is your array of data
             $numItemsBlkg = count($paket);
@@ -158,6 +159,7 @@
 
                         if ($indexBlkg < $numItemsBlkg) {
                             echo '<td>';
+                            // echo '<img src="' . base_url('assets/img/labelkoper/hajidepanbis2.jpg') . '" style="width: 350px;">';
                             if ($paket[0]['kategori'] == 'Haji') {
                                 if ($paket[0]['bus'] == 'BUS 1') {
                                     echo '<img src="' . base_url('assets/img/labelkoper/hajiblkgbis1.jpg') . '" style="width: 350px;">';
@@ -165,12 +167,15 @@
                                     echo '<img src="' . base_url('assets/img/labelkoper/hajiblkgbis2.jpg') . '" style="width: 350px;">';
                                 }
                             } else {
-                                echo '<img src="' . base_url('assets/img/labelkoper/belakangnip.jpg') . '" style="width: 350px;">';
+                                echo '<img src="' . base_url('assets/img/labelkoper/blkgnip.jpg') . '" style="width: 350px;">';
                             };
-                            echo '<h4 class="hotelmekkah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_mekkah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_mekkah']) . '&nbsp;' .  '</h4>';
-                            echo '<h4 class="hotelmadinah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_madinah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_madinah']) . '&nbsp;' . '</h4>';
-                            echo '<h5 class="nomorguide text-dark" style="font-weight:normal;font-size: 0.73rem"><strong>' . ($paket[0]['nomor_guide']) . '</strong></h5>';
-
+                            echo '<img src="' . (isset($label[$index]['jamaah_img']) ? base_url('assets/images/' . $label[$index]['jamaah_img']) : '') . '" class="foto img-fluid"  style="border-radius: 10px; object-fit: cover; height: 100px; width: 70px">';
+                            echo '<div class="row nama">';
+                            echo '<div class="col-md-10">';
+                            echo '<h4 class="text-dark" style="font-weight:bold;font-size: medium; word-wrap: break-word;width: fit-content;">' . (isset($label[$index]['nama_jamaah']) ? $label[$index]['nama_jamaah'] : '') . '</h4>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<h5 class="paspor text-dark" style="font-weight:normal;font-size: medium">No. Paspor &nbsp;<strong>' . (isset($label[$index]['nomor_paspor']) ? $label[$index]['nomor_paspor'] : '') . '</strong></h5>';
                             echo '</td>';
                         } else {
                             echo '<td>';
@@ -181,11 +186,8 @@
                                     echo '<img src="' . base_url('assets/img/labelkoper/hajiblkgbis2.jpg') . '" style="width: 350px;">';
                                 }
                             } else {
-                                echo '<img src="' . base_url('assets/img/labelkoper/belakangnip.jpg') . '" style="width: 350px;">';
+                                echo '<img src="' . base_url('assets/img/labelkoper/blkgnip.jpg') . '" style="width: 350px;">';
                             };
-                            echo '<h4 class="hotelmekkah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_mekkah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_mekkah']) . '&nbsp;' .  '</h4>';
-                            echo '<h4 class="hotelmadinah text-dark" style="font-weight:bold;font-size: medium">' . ($paket[0]['hotel_madinah']) . '&nbsp;' . '&#9733;' . ($paket[0]['bintang_madinah']) . '&nbsp;' . '</h4>';
-                            echo '<h5 class="nomorguide text-dark" style="font-weight:normal;font-size: 0.73rem"><strong>' . ($paket[0]['nomor_guide']) . '</strong></h5>';
                             echo '</td>';
                         }
                     }
@@ -203,6 +205,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function printToJpg(tableId) {
         // Use html2canvas to convert the specified table to an image
