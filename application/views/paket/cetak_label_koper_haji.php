@@ -169,14 +169,6 @@
                             } else {
                                 echo '<img src="' . base_url('assets/img/labelkoper/blkgnip.jpg') . '" style="width: 350px;">';
                             };
-                            echo '<img src="' . (isset($label[$index]['jamaah_img']) ? base_url('assets/images/' . $label[$index]['jamaah_img']) : '') . '" class="foto img-fluid"  style="border-radius: 10px; object-fit: cover; height: 100px; width: 70px">';
-                            echo '<div class="row nama">';
-                            echo '<div class="col-md-10">';
-                            echo '<h4 class="text-dark" style="font-weight:bold;font-size: medium; word-wrap: break-word;width: fit-content;">' . (isset($label[$index]['nama_jamaah']) ? $label[$index]['nama_jamaah'] : '') . '</h4>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '<h5 class="paspor text-dark" style="font-weight:normal;font-size: medium">No. Paspor &nbsp;<strong>' . (isset($label[$index]['nomor_paspor']) ? $label[$index]['nomor_paspor'] : '') . '</strong></h5>';
-                            echo '</td>';
                         } else {
                             echo '<td>';
                             if ($paket[0]['kategori'] == 'Haji') {
