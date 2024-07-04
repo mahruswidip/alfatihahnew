@@ -57,6 +57,8 @@ class Paket extends CI_Controller
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
         $user_id = $this->session->userdata('user_id');
 
+        $isi_artikel = $this->input->post('konten');
+
         $this->upload->initialize($config);
         if (!empty($_FILES['paket_img']['name'])) {
             if ($this->upload->do_upload('paket_img')) {
@@ -94,6 +96,7 @@ class Paket extends CI_Controller
                     'belum_termasuk' => 'Biaya Handling Bandara, Fasilitas Ibadah, Manasik • Biaya PCR di Saudi  • Biaya Pengurusan Paspor (Jika belum punya/sudah tidak berlaku) • Biaya Suntik Meningitis. • Biaya Surat Mahram (Bagi wanita usia dibawah 45 Tahun yang berangkat sendirian) • Biaya Pajak Saudi (municipility 5% & VAT 15%) & Biaya Pajak Indonesia (PPN11%).. Jika sudah diberlakukan • Biaya Tour / Makan / Minum diluar program. • Biaya lain-lain yang bersifat pribadi : Telepon, Laundry, Tips, Kelebihan Bagasi, dll.',
                     'tampilan' => 'Uang Muka',
                     'publish' => ($this->input->post('publish') === 'on') ? 1 : 0,
+                    'konten' => $isi_artikel,
                     'created_by' => $user_id,
                 );
 
@@ -121,6 +124,8 @@ class Paket extends CI_Controller
             $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
             $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
             $user_id = $this->session->userdata('user_id');
+
+            $isi_artikel = $this->input->post('konten');
 
             $this->upload->initialize($config);
 
@@ -178,6 +183,7 @@ class Paket extends CI_Controller
                     'belum_termasuk' => $this->input->post('belum_termasuk'),
                     'tampilan' => $this->input->post('tampilan'),
                     'publish' => ($this->input->post('publish') === 'on') ? 1 : 0,
+                    'konten' => $isi_artikel,
                     'paket_img' => $gambar,
                 );
 

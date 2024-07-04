@@ -267,7 +267,13 @@
                                         <input type="checkbox" class="form-check-input" id="publish" name="publish" <?php echo ($paket['publish'] == 1) ? 'checked' : ''; ?>>
                                     </div>
                                 </div>
-
+                            </div>
+                            <hr class="horizontal dark mt-0">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Konten</label>
+                                    <textarea id="editor" name="konten" required><?php echo $artikel['konten']; ?></textarea>
+                                </div>
                             </div>
                         </div>
                         <hr class="horizontal dark mt-0">
@@ -278,3 +284,14 @@
         </div>
     </div>
 </div>
+<!-- Script CKEditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
